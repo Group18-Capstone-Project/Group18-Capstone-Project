@@ -6,20 +6,59 @@ const addEmployee = async (req, res) => {
 
     console.log("Adding Employee");
     let employee = req.body;
+
     //let employee = {}
     console.log(employee);
-    let r = await empModel.insertMany([employee], (e, result) => {
+
+    // let r = await empModel.find({emailid:employee.emailid});
+    // if(r.length != 0){
+    //     res.status(200).send({"msg": "New Employee added suceefully"});
+    // }else{
+    //     console.log("s");
+    // }
+   
+    //console.log("=================")
+    //console.log(r);
+    //console.log("=================")
+
+    let empWithPass = {...employee, "password":"welcome123"}
+
+    await empModel.insertMany([empWithPass], (e, result) => {
         if(e){
-            res.status(400).send({"msg":e.writeErrors[0].errmsg});
+            res.status(400).send({"msg":e});
         }else{
-            res.status(200).send({"msg": "New Employee added suceefully"});
+            // send 
+            res.status(200).send({"msg": "New Employee added suceefully", "result": result});
             
         }
     });
 
+
+
+}
+
+
+const deleteEmployee = async (req, res) => {
+
+    console.log("Adding Employee");
+    let employee = req.body;
+    //let employee = {}
+    console.log(employee);
+    let r = await empModel.deleteOne({emailid: employee.emailid})
+    //console.log(r);
+
+    if(r.deletedCount == 0){
+        res.status(400).send({"msg": "Employee could not be delted, please input a valid email id"});
+    }else{
+        res.status(200).send({"msg": `Employee ${employee.emailid} deleted`})
+    }
 }
 
 
 
 
-module.exports = {addEmployee} //, updateEmployee, deleteEmployee, getEmployees};
+
+
+
+
+module.exports = {addEmployee, deleteEmployee} //, updateEmployee, deleteEmployee, getEmployees};
