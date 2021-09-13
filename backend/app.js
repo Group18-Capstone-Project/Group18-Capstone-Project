@@ -36,7 +36,7 @@ mongoose.connect(dbUrl)
 
 app.use("/api/admin", adminRouter);
 app.use("/api/employee", employeeRouter);
-app.use("/api/use", userRouter);
+app.use("/api/user", userRouter);
 
 
 
