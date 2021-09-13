@@ -1,0 +1,32 @@
+<div>
+    <h2>Creating the Account</h2>
+    <form [formGroup]="accountRef" (ngSubmit)="accountCreate()">
+        <label>First Name: </label>
+        <input type="text" formControlName="firstname"> 
+        <br>
+        <label>Last Name: </label>
+        <input type="text" formControlName="lastname"> 
+        <br>
+        <label>Email: </label>
+        <input type="text" formControlName="email"> 
+        <br>
+        <label>Password: </label>
+        <input type="password" formControlName="password"/> 
+        <br>
+        <label>Date of Birth: </label>
+        <input type="date" formControlName="dob"> 
+        <br>
+        <label>Phone Number: </label>
+        <input type="number" formControlName="phone"> 
+        <br>
+        <label>Address: </label>
+        <input type="number" formControlName="address"> 
+        <br>
+
+        <input type="submit" value="Sign Up">
+        <input type="reset" value="reset">
+    </form>
+    <a routerLink="/userSignIn">Login Page</a>
+    <br/>
+    {{msg}}
+</div>
