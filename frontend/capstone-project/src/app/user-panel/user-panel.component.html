@@ -1,5 +1,23 @@
-<div>
-    <h2>Welcome {{userName}} to User Panel</h2>
-    <input type="button" value="Logout"
-    (click)="logout()"/>
+<h2>Welcome {{userName}} to User Panel (Grocers) </h2>
+<a routerLink=""> Edit Profile</a> |
+<a routerLink=""> Manage Account</a> |
+<a routerLink=""> Order History</a> |
+<a routerLink=""> Raise Ticket</a> |
+<a routerLink="/userSignIn"> Log Out</a>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <label>Cart Size:</label><label id="size">0</label>
+        </div>
+        <div class="col">
+            <form>
+                <input type="submit" value="Check Out">
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container" id="items_container">
+    <div class="row" id="items">
+    </div>
 </div>
