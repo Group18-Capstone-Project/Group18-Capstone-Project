@@ -20,4 +20,19 @@ const updateOrderStatus = async (req, res) => {
 }
 
 
-module.exports = {updateOrderStatus};
+//Shows order status for one userID
+let showOrderStatus = (request, response) =>{
+    let UserId = request.body.uid;
+
+    orderModel.find({userId:UserId}, (err, data) => {
+        if(!err){
+            response.json(data);
+        }
+        else{
+            response.json(error);
+        }
+    } )
+}
+
+
+module.exports = {updateOrderStatus, showOrderStatus};

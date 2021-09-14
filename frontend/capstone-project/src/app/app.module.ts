@@ -8,13 +8,17 @@ import { AppComponent } from './app.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
 import { UserSignInComponent } from './user-sign-in/user-sign-in.component';
 import { UserSignUpComponent } from './user-sign-up/user-sign-up.component';
+import { EmployeePanelComponent } from './employee-panel/employee-panel.component';
+import { EmployeeSignInComponent } from './employee-sign-in/employee-sign-in.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserPanelComponent,
     UserSignUpComponent,
-    UserSignInComponent
+    UserSignInComponent,
+    EmployeePanelComponent,
+    EmployeeSignInComponent
   ],
   imports: [
     BrowserModule,

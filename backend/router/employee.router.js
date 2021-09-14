@@ -18,6 +18,7 @@ router.post("/sendProductRequest", reqController.sendProductRequest)
 router.put("/updateOrderStatus", orderController.updateOrderStatus)
 
 
+router.post("/signIn", empController.checkEmployee);
 
 
 module.exports = router;
