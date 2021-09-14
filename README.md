@@ -9,4 +9,12 @@ Subash Mainali: task completed
 -- remove employee \
 -- send product request \
 -- update order status of product \
- 
+
+Jing Lin (participant 2): work done so far
+Backend:
+  -- all the models created
+  -- delete employee
+  -- sign in and sign up User
+Frontend:
+  -- Sign in and Sign up User
+  -- User panel
