@@ -10,7 +10,8 @@ Subash Mainali: task completed
     2. remove employee
     3. send product request
     4. update order status of product
-
+ - Frontend:
+    1. Created the landing page(nav bar)
 
 #### Jing Lin (participant 2): work done so far
 - Backend:
