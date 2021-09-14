@@ -26,3 +26,11 @@ Subash Mainali: task completed
   - [ ] 4. Delete Employee
   - [ ] 5. Generate report
   - [ ] 6. Logout
+
+
+Alexander Isin:
+(NEED TO TEST THESE)
+order staus: backend done
+edit profile (user): backend done
+employee panel: working on front end
+employee sign in: back end and front end done
