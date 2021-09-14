@@ -1,0 +1,17 @@
+<div class="container-fluid">
+      <header>
+          <div class="logo">Store</div>
+          <nav>
+              <ul class="nav-link">
+                  <li><a routerLink="/employee">Employee</a></li>
+                  <li><a routerLink="/userSignUp">Sign Up</a></li>
+                  <li><a routerLink="/">Home</a></li>
+              </ul>
+          </nav>
+          <a routerLink="/userSignIn"><button type="button" class="btn btn-info">Login</button></a>
+      </header>
+      <div class="pages">
+        <router-outlet></router-outlet>
+      </div>
+      
+</div>
