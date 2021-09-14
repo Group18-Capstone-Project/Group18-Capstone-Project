@@ -1,14 +1,16 @@
 # Group18-Capstone-Project
 
-run npm install on backend to install the dependencies.\
-run npm install on frontend/capstone to install the dependencies for angular.\
+## run npm install on backend to install the dependencies.
+## run npm install on frontend/capstone to install the dependencies for angular.
 
 
 Subash Mainali: task completed
--- add employee \
--- remove employee \
--- send product request \
--- update order status of product \
+  Backend:
+    1. add employee 
+    2. remove employee
+    3. send product request
+    4. update order status of product
+
 
 #### Jing Lin (participant 2): work done so far
 - Backend:
