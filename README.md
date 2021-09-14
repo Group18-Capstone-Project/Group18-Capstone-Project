@@ -1,6 +1,12 @@
 # Group18-Capstone-Project
 
-Employee
-    -- emailid must be unique.
-    -- "welcome123" password is assinged as a defult.
-    -- upon employ creation, employee must change password.
+run npm install on backend to install the dependencies.\
+run npm install on frontend/capstone to install the dependencies for angular.\
+
+
+Subash Mainali: task completed
+-- add employee \
+-- remove employee \
+-- send product request \
+-- update order status of product \
+ 
