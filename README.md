@@ -29,8 +29,8 @@ Subash Mainali: task completed
 
 
 Alexander Isin:
-(NEED TO TEST THESE)
-order staus: backend done
-edit profile (user): backend done
-employee panel: working on front end
-employee sign in: back end and front end done
+1. (NEED TO TEST THESE)
+2. order staus: backend done
+3. edit profile (user): backend done
+4. employee panel: working on front end
+5. employee sign in: back end and front end done
