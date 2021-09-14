@@ -10,7 +10,7 @@ let userSchema = mongoose.Schema({
     dob: { type: String },
     phone: { type: Number },
     address: { type: String },
-    userId: { type: Number }
+    locked: { type: Boolean, default: false }
 });
 
 let userModel = mongoose.model("User", userSchema);
