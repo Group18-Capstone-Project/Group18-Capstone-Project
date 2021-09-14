@@ -12,9 +12,15 @@ Subash Mainali: task completed
 
 #### Jing Lin (participant 2): work done so far
 - Backend:
-  ...1. all the models created
-  ...2. delete employee
-  ...3. sign in and sign up User
+  - [x] 1. All the models created
+  - [x] 2. Delete employee
+  - [x] 3. Sign in and sign up User
+  - [ ] 4. Generate report
+  - [ ] 5. Logout
 - Frontend:
-  ...1. Sign in and Sign up User
-  ...2. User panel (early stage)
+  - [x] 1. Sign in and Sign up User
+  - [x] 2. User panel (early stage)
+  - [ ] 3. Add Employee
+  - [ ] 4. Delete Employee
+  - [ ] 5. Generate report
+  - [ ] 6. Logout
