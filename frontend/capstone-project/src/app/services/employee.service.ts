@@ -28,6 +28,7 @@ export class EmployeeService {
     return this.http.delete(this.ROOT+"/deleteEmployee/"+emp.emailid);
   }
 
+
   changePassword(emp:any) :Observable<any> {
     return this.http.put<any>(`${this.ROOT}/updatePassword`, emp, this.httpOptions)
   }

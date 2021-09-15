@@ -53,4 +53,9 @@ const checkEmployee = async (request, response) =>{
         response.send("Invalid Employee ID or password");
     }
 }
+
+
+
+
 module.exports = {addEmployee, deleteEmployee, checkEmployee, updateEmployee} //, updateEmployee, deleteEmployee, getEmployees};
+
