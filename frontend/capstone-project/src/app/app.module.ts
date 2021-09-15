@@ -10,6 +10,8 @@ import { UserSignInComponent } from './user-sign-in/user-sign-in.component';
 import { UserSignUpComponent } from './user-sign-up/user-sign-up.component';
 import { EmployeePanelComponent } from './employee-panel/employee-panel.component';
 import { EmployeeSignInComponent } from './employee-sign-in/employee-sign-in.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { EmployeeSignInComponent } from './employee-sign-in/employee-sign-in.com
     UserSignUpComponent,
     UserSignInComponent,
     EmployeePanelComponent,
-    EmployeeSignInComponent
+    EmployeeSignInComponent,
+    AdminPanelComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
