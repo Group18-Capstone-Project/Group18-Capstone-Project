@@ -9,6 +9,8 @@ let productSchema = mongoose.Schema({
     discount: { type: Number, default: 1 } // set default to 1 means no discount, 0.8 means 20% off, 0.6 means 40% off
 });
 
+
+
 let productModel = mongoose.model("Product", productSchema);
 
 module.exports = productModel;
