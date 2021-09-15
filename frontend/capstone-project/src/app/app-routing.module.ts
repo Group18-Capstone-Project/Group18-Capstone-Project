@@ -5,6 +5,7 @@ import { UserPanelComponent } from './user-panel/user-panel.component';
 import { UserSignInComponent } from './user-sign-in/user-sign-in.component';
 import { UserSignUpComponent } from './user-sign-up/user-sign-up.component';
 import { HomeComponent } from './home/home.component';
+import { EmployeeSignInComponent } from './employee-sign-in/employee-sign-in.component';
 
 const routes: Routes = [
   {path: "home", component:HomeComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path:"userSignUp",component:UserSignUpComponent},
   {path:"userPanel/:user",component:UserPanelComponent},
   {path:"adminPanel", component:AdminPanelComponent},
+  {path:"empSignIn", component:EmployeeSignInComponent},
   {path:"",redirectTo:"userSignIn",pathMatch:"prefix"}
 ];
 

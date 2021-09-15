@@ -11,6 +11,6 @@ export class EmployeeService {
   constructor(public http: HttpClient) { }
 
   signIn(emp: Employee): Observable<any>{
-    return this.http.post("http://localhost:9090/api/employee", emp, { responseType: "text"});
+    return this.http.post("http://localhost:9090/api/employee/signIn", emp, { responseType: "text"});
   }
 }
