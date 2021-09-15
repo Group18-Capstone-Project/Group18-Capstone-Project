@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { tap, catchError } from "rxjs/operators";
 import { Product } from '../model/product';
 
@@ -16,7 +16,7 @@ export class ProductsService {
 
   constructor(private http: HttpClient) { }
 
-  getAll() {
+  getAll():Observable<Product[]> {
 		const url = this.host + this.endpoint;
     
 		return this.http.get<Product[]>(url)

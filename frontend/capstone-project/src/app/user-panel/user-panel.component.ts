@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Product } from '../model/product';
 import { ProductsService } from '../services/products.service';
 
 @Component({
@@ -24,24 +25,24 @@ export class UserPanelComponent implements OnInit {
   // cart = new Array<Product>();
 // jing part 
 
-products: {name: string, price: Number, quantity: Number, discount: Number}[] = [];
+// products: {name: string, price: Number, quantity: Number, discount: Number}[] = [];
+products: Product[] = [];
 
 shoppingCart:Array<any> = [];
 
   constructor(public activateRoute: ActivatedRoute, public router: Router,public productsService:ProductsService) { }
 
   ngOnInit(): void {
-
     this.activateRoute.params.subscribe(data => this.userName = data.user);
-
-    this.products=this.productsService.getAll().subscribe(products=>{this.products = products as any;});
-
-    this.displayProducts();
-
+    this.productsService.getAll().subscribe(products=>{
+      this.products = products;
+      this.displayProducts(this.products);
+    });
+    
   }
 
-  displayProducts() {
-
+  displayProducts(products:Product[]) {
+    this.products = products;
     console.log(this.products);
     
     for (const item of this.products) {
