@@ -12,6 +12,7 @@ import { EmployeePanelComponent } from './employee-panel/employee-panel.componen
 import { EmployeeSignInComponent } from './employee-sign-in/employee-sign-in.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { HomeComponent } from './home/home.component';
+import { EmployeeChangePasswordComponent } from './employee-change-password/employee-change-password.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HomeComponent } from './home/home.component';
     EmployeePanelComponent,
     EmployeeSignInComponent,
     AdminPanelComponent,
-    HomeComponent
+    HomeComponent,
+    EmployeeChangePasswordComponent
   ],
   imports: [
     BrowserModule,
