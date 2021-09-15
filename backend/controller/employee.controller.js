@@ -1,5 +1,7 @@
 //============= Employee Model ==================
+const employeeModel = require("../model/employee.model");
 const empModel = require("../model/employee.model");
+const userModel = require("../model/user.model");
 
 // TODO: add a generaric password for new employee such as "welcome123";
 const addEmployee = async (req, res) => {
@@ -58,9 +60,17 @@ const updateEmployee = async (req, res) => {
 }
 
 
+let checkEmployee = (request, response) =>{
+    let emp = request.body;
+    let empInfo = empModel.findOne({emailid:emp.emailid, password:emp.password});
+    if(empInfo != null){
+        response.send("Success");
+    }else{
+        response.send("Invalid Employee ID or password");
+    }
+}
 
 
 
 
-
-module.exports = {addEmployee, deleteEmployee} //, updateEmployee, deleteEmployee, getEmployees};
+module.exports = {addEmployee, deleteEmployee, checkEmployee} //, updateEmployee, deleteEmployee, getEmployees};

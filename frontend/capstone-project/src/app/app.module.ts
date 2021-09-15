@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
 import { UserSignInComponent } from './user-sign-in/user-sign-in.component';
 import { UserSignUpComponent } from './user-sign-up/user-sign-up.component';
+import { EmployeePanelComponent } from './employee-panel/employee-panel.component';
+import { EmployeeSignInComponent } from './employee-sign-in/employee-sign-in.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { HomeComponent } from './home/home.component';
 
@@ -17,6 +19,8 @@ import { HomeComponent } from './home/home.component';
     UserPanelComponent,
     UserSignUpComponent,
     UserSignInComponent,
+    EmployeePanelComponent,
+    EmployeeSignInComponent,
     AdminPanelComponent,
     HomeComponent
   ],
