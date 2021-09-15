@@ -10,8 +10,38 @@
     </div>
     <div>
         <h4>Employee</h4>
-        <div>Add Employee</div>
-        <div>Delete Employee</div>
+        <div>
+            <h6>Add Employee</h6>
+            <form [formGroup]="employeeRef" (ngSubmit)="employeeCreate()">
+                <label>First Name: </label>
+                <input type="text" formControlName="fname">
+                <br>
+                <label>Last Name: </label>
+                <input type="text" formControlName="lname">
+                <br>
+                <label>Email ID: </label>
+                <input type="email" formControlName="emailid" required>
+                <br>
+                <label>Password: </label>
+                <input type="text" formControlName="password" placeholder="welcome123" [disabled]="true"> <br>
+                <span>(it's the password you use for first login, and the system will ask you to change the password)</span>
+                <br>
+                <input type="submit" value="Add New Employee">
+                <input type="reset" value="Clear">
+            </form>
+            {{addMsg}}
+        </div>
+        <div>
+            <h6>Delete Employee</h6>
+            <form [formGroup]="employeeDeleteRef" (ngSubmit)="employeeDelete()">
+                <label>Email ID: </label>
+                <input type="email" formControlName="emailid" required> 
+                <br>
+                <input type="submit" value="Delete the Employee">
+                <input type="reset" value="Clear">
+            </form>
+            {{deleteMsg}}
+        </div>
     </div>
     <div>
         Generate reports
