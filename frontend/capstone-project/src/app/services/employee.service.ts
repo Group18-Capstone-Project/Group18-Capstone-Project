@@ -17,6 +17,7 @@ export class EmployeeService {
   ROOT = "http://localhost:9090/api/employee";
 
   signIn(emp: Employee): Observable<any>{
+
     return this.http.post(`${this.ROOT}/signIn`, emp, { responseType: "text"});
   }
 
@@ -30,5 +31,6 @@ export class EmployeeService {
 
   changePassword(emp:any) :Observable<any> {
     return this.http.put<any>(`${this.ROOT}/updatePassword`, emp, this.httpOptions)
+
   }
 }
