@@ -55,14 +55,24 @@ const deleteEmployee = async (req, res) => {
 
 const updateEmployee = async (req, res) => {
     console.log("Updating employee")
-
+    let employee = req.body;
+    let r = await empModel.updateOne({emailid: employee.emailid}, {password: employee.password})
+    if(r.matchedCount == 0){
+        res.status(400).send({"msg": `employee with id:${employee.emailid} does not exist`});
+    }else{
+        if(r.modifiedCount != 0){
+            res.status(200).send({"msg": "employe password updated", "status":"Success"});
+        }
+    }
 
 }
 
 
-let checkEmployee = (request, response) =>{
+const checkEmployee = async (request, response) =>{
     let emp = request.body;
-    let empInfo = empModel.findOne({emailid:emp.emailid, password:emp.password});
+    console.log(emp)
+    let empInfo = await empModel.findOne({emailid:emp.emailid, password:emp.password});
+    console.log(empInfo)
     if(empInfo != null){
         response.send("Success");
     }else{
@@ -73,4 +83,4 @@ let checkEmployee = (request, response) =>{
 
 
 
-module.exports = {addEmployee, deleteEmployee, checkEmployee} //, updateEmployee, deleteEmployee, getEmployees};
+module.exports = {addEmployee, deleteEmployee, checkEmployee, updateEmployee} //, updateEmployee, deleteEmployee, getEmployees};

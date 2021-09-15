@@ -10,6 +10,7 @@ const orderController = require("../controller/order.controller");
 // Employee
 router.post("/addEmployee", empController.addEmployee)
 router.delete("/deleteEmployee", empController.deleteEmployee);
+router.put("/updatePassword", empController.updateEmployee);
 
 // Request
 router.post("/sendProductRequest", reqController.sendProductRequest)
@@ -19,6 +20,5 @@ router.put("/updateOrderStatus", orderController.updateOrderStatus)
 
 
 router.post("/signIn", empController.checkEmployee);
-
 
 module.exports = router;

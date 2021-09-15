@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeService } from '../services/employee.service';
 
 @Component({
@@ -14,14 +14,28 @@ export class EmployeeSignInComponent implements OnInit {
     emailid: new FormControl(),
     password: new FormControl()
   })
-  constructor(public empSer:EmployeeService, public router:Router) { }
+  constructor(public activateRoute: ActivatedRoute, public empSer:EmployeeService, public router:Router) { }
 
   ngOnInit(): void {
   }
 
-  checkUser(){
+  checkEmployee(){
     let login = this.empRef.value;
-    this.empSer.signIn(login).subscribe(result=>console.log(result), error=>this.msg=error);
+    console.log(login);
+    this.empSer.signIn(login).subscribe( result => {
+      console.log(result);
+      if(result === "Success" && login.password === "welcome123"){
+        console.log("hola");
+        this.router.navigate(["employeChangePassword"]);
+      }
+
+      if(result === "Success"  && login.password !== "welcome123"){
+        this.router.navigate(["employePanel", login.emailid]);
+      }else{
+        this.msg = result;
+      }
+
+    }, error=>this.msg=error);
     this.empRef.reset();
   }
 
