@@ -1,3 +1,4 @@
+
 const proModel = require("../model/product.model");
 
 let addProduct = (request,response)=> {
@@ -18,9 +19,38 @@ let deleteProduct = (request,response)=> {
             response.send(result)
         }else {
             response.send(err);
+
         }
     })
-}
+ }
+
+
+let getAll = async (req, res, next) => {
+
+	const query = proModel.find({});
+
+	query.exec()
+		.then(doc => res.status(200).json(doc))
+		.catch(next)
+
+};
+
+// aakash
+
+// let getAllProductDetails =(request,response)=>{
+
+//     productModel.find({},(err,data)=>{
+//         if(!err){
+//             response.json(data);
+//         }
+//         else{
+//             response.json(err);
+//         }
+//     })
+
+// }
+
+
 
 let updateProduct = (request,response)=> {
     let product = request.body;
@@ -33,4 +63,5 @@ let updateProduct = (request,response)=> {
     })
 }
 
-module.exports= {addProduct,deleteProduct,updateProduct}
+module.exports= {addProduct,deleteProduct,updateProduct,getAll}
+

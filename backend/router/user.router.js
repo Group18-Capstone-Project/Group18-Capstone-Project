@@ -4,5 +4,6 @@ let userController = require("../controller/user.controller");
 
 router.post("/signIn",userController.signIn);
 router.post("/signUp",userController.signUp);
+router.put("/updateUser", userController.updateDetails);
 
 module.exports=router;

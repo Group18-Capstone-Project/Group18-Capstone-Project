@@ -10,7 +10,8 @@ const PORT = 9090;
 const adminRouter = require("./router/admin.router");
 const employeeRouter = require("./router/employee.router");
 const userRouter = require("./router/user.router");
-const productRouter = require("./router/product.router");
+const routerProduct = require("./router/product.router");
+
 
 
 //================= Middlewears ================
@@ -33,12 +34,16 @@ mongoose.connect(dbUrl)
         console.log(e);
     });
 
+    // http://localhost:9090/api/product/getAllProducts
+
+    // http://localhost:9090/api/product/storeProduct
 
 
 app.use("/api/admin", adminRouter);
 app.use("/api/employee", employeeRouter);
 app.use("/api/user", userRouter);
-app.use("/api/product", productRouter);
+app.use("/api/product",routerProduct);
+
 
 
 

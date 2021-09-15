@@ -8,10 +8,14 @@ Subash Mainali: task completed
  - Backend:
     1. add employee 
     2. remove employee
-    3. send product request
-    4. update order status of product
+    3. send product request from employee
+    4. update order status of product from employee
+    5. employee can change the password on first login
  - Frontend:
     1. Created the landing page(nav bar)
+    2. Employee landing panel
+    3. Employee change password panel, once the password is changed, rediret to Employee landing panel
+
 
 #### Jing Lin (participant 2): work done so far
 - Backend:
