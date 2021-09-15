@@ -7,7 +7,6 @@ import { Employee } from '../model/employee';
   providedIn: 'root'
 })
 export class EmployeeService {
-
   constructor(public http: HttpClient) { }
   httpOptions = {
     headers: new HttpHeaders({
@@ -19,6 +18,14 @@ export class EmployeeService {
 
   signIn(emp: Employee): Observable<any>{
     return this.http.post(`${this.ROOT}/signIn`, emp, { responseType: "text"});
+  }
+
+  addEmployee(emp:Employee): Observable<any>{
+    return this.http.post(this.ROOT+"/addEmployee", emp, { responseType: 'json' });
+  }
+
+  deleteEmployee(emp:Employee): Observable<any>{
+    return this.http.delete(this.ROOT+"/deleteEmployee/"+emp.emailid);
   }
 
   changePassword(emp:any) :Observable<any> {
