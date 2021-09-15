@@ -1,11 +1,33 @@
-// lode module file
 
-const { response } = require("express");
-let productModel = require("../model/product.model")
+const proModel = require("../model/product.model");
+
+let addProduct = (request,response)=> {
+    let product = request.body;
+
+    proModel.insertMany(product,(err,result)=> {
+        if(!err){
+                response.send("Added successfully")
+        }else {
+                response.send(err);
+        }
+    })
+}
+let deleteProduct = (request,response)=> {
+    let pid = request.params.pid;
+    proModel.deleteOne({_id:pid},(err,result)=> {
+        if(!err){
+            response.send(result)
+        }else {
+            response.send(err);
+
+        }
+    })
+ }
+
 
 let getAll = async (req, res, next) => {
 
-	const query = productModel.find({});
+	const query = proModel.find({});
 
 	query.exec()
 		.then(doc => res.status(200).json(doc))
@@ -29,21 +51,17 @@ let getAll = async (req, res, next) => {
 // }
 
 
-let storeProduct =(req,res)=>{
-    let product=req.body;
 
-    productModel.insertMany(product,(err,result)=>{
+let updateProduct = (request,response)=> {
+    let product = request.body;
+    proModel.updateOne({_id:product._id},{$set:{price:product.price}},(err,result)=> {
         if(!err){
-            res.send("record stored");
-
-        }
-        else{
-            res.send(err);
+            response.send(result);
+        }else {
+            response.send(err);
         }
     })
 }
 
+module.exports= {addProduct,deleteProduct,updateProduct,getAll}
 
-
-
-module.exports = {getAll,storeProduct}

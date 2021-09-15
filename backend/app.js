@@ -13,6 +13,7 @@ const userRouter = require("./router/user.router");
 const routerProduct = require("./router/product.router");
 
 
+
 //================= Middlewears ================
 app.use(cors());
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
@@ -41,10 +42,7 @@ mongoose.connect(dbUrl)
 app.use("/api/admin", adminRouter);
 app.use("/api/employee", employeeRouter);
 app.use("/api/user", userRouter);
-
 app.use("/api/product",routerProduct);
-
-
 
 
 
