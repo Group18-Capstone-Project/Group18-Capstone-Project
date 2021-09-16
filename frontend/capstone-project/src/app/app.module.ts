@@ -13,6 +13,7 @@ import { EmployeeSignInComponent } from './employee-sign-in/employee-sign-in.com
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { HomeComponent } from './home/home.component';
 import { EmployeeChangePasswordComponent } from './employee-change-password/employee-change-password.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { EmployeeChangePasswordComponent } from './employee-change-password/empl
     EmployeeSignInComponent,
     AdminPanelComponent,
     HomeComponent,
-    EmployeeChangePasswordComponent
+    EmployeeChangePasswordComponent,
+    AdminLoginComponent
   ],
   imports: [
     BrowserModule,
