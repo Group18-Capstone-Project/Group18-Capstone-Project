@@ -22,4 +22,15 @@ let addFunds = async (request, response)=>{
     }
 }
 
-module.exports={addFunds};
+let createAccount = async (request, response)=>{
+    let user = request.body;
+    fundModel.insertMany({userId:user.email, account:user.phone, amount:500}, (err, result) =>{
+        if(!err){
+            response.send(result);
+        }else{
+            response.send(err);
+        }
+    });
+}
+
+module.exports={addFunds, createAccount};

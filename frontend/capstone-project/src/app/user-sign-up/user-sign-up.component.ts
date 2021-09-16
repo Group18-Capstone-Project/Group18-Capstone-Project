@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { FundService } from '../services/fund.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -20,8 +21,9 @@ export class UserSignUpComponent implements OnInit {
   })
 
   msg?: string;
+  accNum?:Number;
 
-  constructor(public userSer: UserService) { }
+  constructor(public userSer: UserService, public fundSer: FundService) { }
   
   ngOnInit(): void {
   }
@@ -30,7 +32,9 @@ export class UserSignUpComponent implements OnInit {
     let account = this.accountRef.value;
     this.userSer.signUpAccount(account)
     .subscribe(result=>this.msg=result,error=>console.log(error));
+    this.fundSer.createAccount(account).subscribe(result=>console.log(result), error=>console.log(error));
     this.accountRef.reset();
+    
   }
 
 }
