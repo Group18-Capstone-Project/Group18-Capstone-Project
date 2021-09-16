@@ -52,7 +52,63 @@
     <div style=" text-align:center">
         <div>
             <h6>Generate reports</h6>
+            <form [formGroup]="reportForm" (ngSubmit)="generateReport()">
+                <label>Select a type of report</label>
+                <br>
+                <input type="radio" formControlName="type" value="daily">
+                <label for="daily">Daily Report </label>&nbsp;
+                <input type="radio" formControlName="type" value="weekly">
+                <label for="weekly">Weekly Report </label>&nbsp;
+                <input type="radio" formControlName="type" value="monthly">
+                <label for="monthly">Monthly Report </label>&nbsp;
+                <br>
+                <div *ngIf="reportForm.value.type == 'daily' || reportForm.value.type == 'weekly' || reportForm.value.type == 'monthly'">
+                    <input type="date" formControlName="date">
+                </div>
+                <input type="radio" formControlName="type" value="product">
+                <label for="product">Product Report</label>&nbsp;
+                <input type="radio" formControlName="type" value="customer">
+                <label for="user">Customer Report</label>&nbsp;
+                <div *ngIf="reportForm.value.type === 'product'">
+                    <label>Product Name:</label> 
+                    <input type="text" formControlName="pName">
+                </div>
+                <div *ngIf="reportForm.value.type === 'customer'">
+                    <label>Customer Email:</label> 
+                    <input type="text" formControlName="cEmail">
+                </div>
+                <br>
+                <input type="submit" value="Generate the Report">
+            </form>
         </div>
+        <p *ngIf="reportGenerated && reportEmpty">No Result Found</p>
+        <table *ngIf="reportGenerated && !reportEmpty">
+            <thead>
+                <tr>
+                    <th>User Email</th>
+                    <th>Items</th>
+                    <th>Total Price</th>
+                    <th>Total Quantity</th>
+                    <th>Status</th>
+                    <th>Order Placed Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let report of reports">
+                    <td>{{report.userId}}</td>
+                    <td>
+                        <div *ngFor="let item of report.pOrdered | keyvalue">
+                            <td>{{item.key}}</td>
+                            <td>{{item.value}}</td>
+                        </div>
+                    </td>
+                    <td>${{report.pTotalPrice}}</td>
+                    <td>{{report.pQuantity}}</td>
+                    <td>{{report.status}}</td>
+                    <td>{{report.orderPlaced}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     <br>
     <div style=" text-align:center">
