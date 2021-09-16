@@ -15,7 +15,7 @@ export class AdminPanelComponent implements OnInit {
     fname: new FormControl(),
     lname: new FormControl(),
     emailid: new FormControl('', Validators.required),
-    password: new FormControl({value:'welcome123', disabled:true})
+    password: new FormControl({value:'welcome123', disabled:true}, Validators.required)
   })
 
   // form reference for deleting the Employee
@@ -52,6 +52,7 @@ export class AdminPanelComponent implements OnInit {
     .subscribe(result=>this.addMsg=result.msg, error=>console.log(error));
     this.employeeRef.reset();
   }
+  
   // delete the employee with
   employeeDelete(){
     let employee = this.employeeDeleteRef.value;
@@ -59,6 +60,7 @@ export class AdminPanelComponent implements OnInit {
     .subscribe(result=>this.deleteMsg=result.msg, error=>console.log(error));
     this.employeeRef.reset();
   }
+
   // generate report
   generateReport(){
     let report = this.reportForm.value;
@@ -67,8 +69,10 @@ export class AdminPanelComponent implements OnInit {
       console.log(result);
       this.reports = result;
       this.reportGenerated = true;
-      if(this.reports.length == 0){
+      if(this.reports.length <= 0){
         this.reportEmpty = true;
+      }else{
+        this.reportEmpty = false;
       }
     }, error=>console.log(error));
     this.reportForm.reset();

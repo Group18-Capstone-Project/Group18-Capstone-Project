@@ -18,4 +18,9 @@ export class UserService {
   signUpAccount(user: User): Observable<any> {
     return this.http.post(this.user_port + "/signUp", user, { responseType: 'text' });
   }
+
+  updateAccountStatus(user:User, status:boolean):Observable<any> {
+    user.isLocked = status;
+    return this.http.put(this.user_port+"/updateAccountLocked", user, {responseType:'text'});
+  }
 }

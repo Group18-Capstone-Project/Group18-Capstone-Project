@@ -1,5 +1,7 @@
 <div>
     <h2 style="text-align:center">Welcome to Admin Panel</h2><br>
+    <!--TODO: change to admin login after Bhuwan is done-->
+    <a routerLink="/userSignIn">Log Out</a>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-4">
@@ -24,9 +26,9 @@
                         <input type="email" formControlName="emailid" required>
                         <br>
                         <label>Password: </label>
-                        <input type="text" formControlName="password" placeholder="welcome123" [disabled]="true"> <br>
+                        <input type="text" formControlName="password" placeholder="welcome123"> <br>
                         <span>(it's the password you use for first login, and the system will ask you to change the
-                            password)</span>
+                            password for first login)</span>
                         <br>
                         <input type="submit" value="Add New Employee">
                         <input type="reset" value="Clear">

@@ -13,11 +13,11 @@ let signUp = async (request,response)=> {
 
 let signIn = async (request,response)=> {
     let user = request.body;    // receive the data from post method
-    let userInfo = await userModel.findOne({email:user.email,password:user.password});
+    let userInfo = await userModel.findOne({email:user.email,password:user.password, locked:false});
     if(userInfo!=null){
         response.send("Success");      
     }else {
-        response.send("InValid username or password, please try again.");
+        response.send("InValid username or password, please try again. (if your account is locked please raise the ticket)");
     }
 }
 
@@ -33,5 +33,14 @@ let updateDetails = (request, response) =>{
         }
     })
 }
-
-module.exports={signIn,signUp, updateDetails}
+let updateAccountLocked = (req, res)=>{
+    let user = req.body;
+    userModel.updateOne({email:user.email}, {$set:{locked:user.isLocked}}, (err, result)=>{
+        if(result.modifiedCount == 1 || result.matchedCount == 1){
+            res.send("Success");
+        }else{
+            res.send(error);
+        }
+    })
+}
+module.exports={signIn,signUp, updateDetails, updateAccountLocked}

@@ -3,12 +3,16 @@ let orderModel = require("../model/order.model");
 let retrieveReportByDate = (req, res) => {
     // let report = JSON.parse(req.query.report);
     let report = req.query;
-    console.log(report.startDate);
-    console.log(report.endDate);
-    orderModel.find({ orderPlaced: { $gte: report.startDate, $lte: report.endDate } }, (err, data) => {
+    let start = new Date(report.startDate).getTime();
+    let end = new Date(report.endDate).getTime();
+    orderModel.find({}, (err, data) => {
         if (!err) {
-            res.json(data);
-            console.log(data);
+            // element.orderPlaced>=report.startDate && element.orderPlaced<=endDate
+            let result = data.filter(element=>{
+                let time = element.orderPlaced.getTime();
+                return time >= start && time <= end;
+            });
+            res.json(result);
         } else {
             res.json(err);
         }
@@ -25,16 +29,17 @@ let retrieveReportByProduct = (req, res) => {
     })
 }
 
-let retrieveReportByEmail = (req, res) => {
-    console.log(req.query.cEmail);
-    orderModel.find({ userId:req.query.cEmail }, (err, result) => {
+let retrieveReportByEmail = (request, response) => {
+    let UserId = request.query.cEmail;
+    orderModel.find({}, (err, data) => {
         if (!err) {
-            res.json(result);
-            console.log(result);
-        } else {
-            res.json(err);
+            let result = data.filter(element => element.userId == UserId);
+            response.json(result);
+        }else {
+            response.json(err);
         }
     })
-};
+}
+
 
 module.exports = { retrieveReportByDate, retrieveReportByProduct, retrieveReportByEmail }
