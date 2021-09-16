@@ -18,4 +18,8 @@ export class UserService {
   signUpAccount(user: User): Observable<any> {
     return this.http.post(this.user_port + "/signUp", user, { responseType: 'text' });
   }
+
+  changeAccount(user: User): Observable<any>{
+    return this.http.put(this.user_port + "/updateUser", user, {responseType: 'text'});
+  }
 }

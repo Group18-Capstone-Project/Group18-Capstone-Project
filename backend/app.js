@@ -11,6 +11,7 @@ const adminRouter = require("./router/admin.router");
 const employeeRouter = require("./router/employee.router");
 const userRouter = require("./router/user.router");
 const routerProduct = require("./router/product.router");
+const fundRouter = require("./router/fund.router");
 
 
 
@@ -43,6 +44,7 @@ app.use("/api/admin", adminRouter);
 app.use("/api/employee", employeeRouter);
 app.use("/api/user", userRouter);
 app.use("/api/product",routerProduct);
+app.use("/api/fund", fundRouter);
 
 
 
