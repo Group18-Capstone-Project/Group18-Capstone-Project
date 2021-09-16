@@ -14,9 +14,16 @@ const sendProductRequest = async (req, res) => {
             res.status(200).send({"msg": "New request added suceefully", "result": result});            
         }
     });
-
-
 }
+const fetchAll = async (req, res, next) => {
+
+    const query = reqModel.find({});
+
+    query.exec()
+        .then(doc => res.status(200).json(doc))
+        .catch(next)
+
+};
 
 
 module.exports = {sendProductRequest};

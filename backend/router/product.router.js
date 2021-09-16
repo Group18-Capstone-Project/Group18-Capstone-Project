@@ -6,7 +6,7 @@ let productController = require("../controller/product.controller");
 
 
 router.post("/addProduct", productController.addProduct);
-router.delete("/deleteProduct", productController.deleteProduct);
+router.delete("/deleteProduct/:productCode", productController.deleteProduct);
 router.put("/updateProduct",productController.updateProduct);
 router.get("/getAllProducts",productController.getAll);
 

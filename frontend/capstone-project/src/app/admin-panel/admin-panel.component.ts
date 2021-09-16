@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { EmployeeService } from '../services/employee.service';
+import { Router } from '@angular/router';
 import { ReportService } from '../services/report.service';
+
 
 
 @Component({
@@ -35,12 +37,14 @@ export class AdminPanelComponent implements OnInit {
   addMsg?:string;
   deleteMsg?:string;
 
+
   reportType?:string;
   reports: any;
   reportGenerated:boolean = false;
   reportEmpty:boolean = false;
 
-  constructor(public empSer:EmployeeService, public reportSer:ReportService) { }
+  constructor(public empSer:EmployeeService, public router:Router,public reportSer:ReportService) { }
+
 
   ngOnInit(): void {
   }
@@ -61,6 +65,16 @@ export class AdminPanelComponent implements OnInit {
     this.employeeRef.reset();
   }
 
+  gotoProduct(){
+    this.router.navigate(["addProduct"])
+  }
+updateProduct(){
+    this.router.navigate(["updateProduct"])
+  }
+  deleteProduct(){
+    this.router.navigate(["deleteProduct"])
+  }
+
   // generate report
   generateReport(){
     let report = this.reportForm.value;
@@ -76,5 +90,6 @@ export class AdminPanelComponent implements OnInit {
       }
     }, error=>console.log(error));
     this.reportForm.reset();
+
   }
 }

@@ -9,6 +9,7 @@ import { Ticket } from '../model/ticket';
 })
 export class UserService {
   user_port = "http://localhost:9090/api/user";
+  
 
   constructor(public http: HttpClient) { }
 
