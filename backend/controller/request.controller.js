@@ -26,4 +26,4 @@ const fetchAll = async (req, res, next) => {
 };
 
 
-module.exports = {sendProductRequest};
+module.exports = {sendProductRequest, fetchAll};
