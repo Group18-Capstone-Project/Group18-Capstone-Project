@@ -11,6 +11,8 @@ import {AdminLoginComponent} from './admin-login/admin-login.component';
 import { EmployeePanelComponent } from './employee-panel/employee-panel.component';
 import { EmployeeSignInComponent } from './employee-sign-in/employee-sign-in.component';
 import { EmployeeChangePasswordComponent } from './employee-change-password/employee-change-password.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
+import { FundAddComponent } from './fund-add/fund-add.component';
 
 const routes: Routes = [
   {path: "home", component:HomeComponent},
@@ -22,6 +24,8 @@ const routes: Routes = [
   {path:"employeSignIn", component:EmployeeSignInComponent},
   {path:"employeChangePassword", component:EmployeeChangePasswordComponent},
   {path:"adminLogin",component:AdminLoginComponent},
+  {path:"userEdit", component:UserEditComponent},
+  {path:"addFunds", component:FundAddComponent},
   {path:"",redirectTo:"userSignIn",pathMatch:"prefix"}
 ];
 
