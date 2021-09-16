@@ -5,6 +5,8 @@ let retrieveReportByDate = (req, res) => {
     let report = req.query;
     let start = new Date(report.startDate).getTime();
     let end = new Date(report.endDate).getTime();
+    console.log(start);
+    console.log(end);
     orderModel.find({}, (err, data) => {
         if (!err) {
             // element.orderPlaced>=report.startDate && element.orderPlaced<=endDate

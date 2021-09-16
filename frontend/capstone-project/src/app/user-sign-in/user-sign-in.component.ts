@@ -16,6 +16,7 @@ export class UserSignInComponent implements OnInit {
   });
   msg?:string;
   attempt:number = 3;
+  countDown = 3;
 
   constructor(public userSer:UserService, public router:Router) { }
     
@@ -40,14 +41,13 @@ export class UserSignInComponent implements OnInit {
     this.msg = "Failed 3 attempts.";
     this.userSer.updateAccountStatus(login, true).subscribe(result=>{
       if(result == "Success"){
-        let countDown = 3;
         setInterval(()=>{
-          this.msg = `Your account is locked. You will go to the page to raise the ticket in ${countDown}s`;
-          countDown--;
-          setTimeout(() => {
-            this.router.navigate(["ticket"]);
-          }, 3000);
+          this.msg = `Your account is locked. You will go to the page to raise the ticket in ${this.countDown}s`;
+          this.countDown--;
         }, 1000);
+        setTimeout(() => {
+          this.router.navigate(["ticket"]);
+        }, 3000);
         
       }else{
         this.msg = result;

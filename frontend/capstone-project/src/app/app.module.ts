@@ -29,7 +29,7 @@ import { FundAddComponent } from './fund-add/fund-add.component';
     AdminPanelComponent,
     HomeComponent,
     EmployeeChangePasswordComponent,
-    TicketComponent
+    TicketComponent,
     AdminLoginComponent,
     UserEditComponent,
     FundAddComponent
