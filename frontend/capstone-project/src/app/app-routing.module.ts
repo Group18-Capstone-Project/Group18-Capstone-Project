@@ -10,6 +10,7 @@ import {AdminLoginComponent} from './admin-login/admin-login.component';
 import {AddProductComponent} from './add-product/add-product.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
 import { DeleteProductComponent } from './delete-user/delete-user.component';
+import { ViewRequestComponent } from './view-request/view-request.component';
 
 import { EmployeePanelComponent } from './employee-panel/employee-panel.component';
 import { EmployeeSignInComponent } from './employee-sign-in/employee-sign-in.component';
@@ -33,7 +34,7 @@ const routes: Routes = [
   {path:"addProduct",component:AddProductComponent},
   {path:"updateProduct",component:UpdateProductComponent},
   {path:"deleteProduct",component:DeleteProductComponent},
-
+  {path:"viewRequest",component:ViewRequestComponent},
   {path:"userEdit", component:UserEditComponent},
   {path:"addFunds", component:FundAddComponent},
 
