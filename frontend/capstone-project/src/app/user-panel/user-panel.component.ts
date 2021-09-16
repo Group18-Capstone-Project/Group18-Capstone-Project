@@ -1,3 +1,4 @@
+import { OrdersService } from './../services/orders.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { min } from 'rxjs/operators';
@@ -31,7 +32,7 @@ products: Product[] = [];
 
 shoppingCart:Array<any> = [];
 
-  constructor(public activateRoute: ActivatedRoute, public router: Router,public productsService:ProductsService) { }
+  constructor(public activateRoute: ActivatedRoute, public router: Router,public productsService:ProductsService,public orderser:OrdersService) { }
 
   ngOnInit(): void {
     this.activateRoute.params.subscribe(data => this.userName = data.user);
@@ -46,72 +47,72 @@ shoppingCart:Array<any> = [];
     this.products = products;
     console.log(this.products);
     
-    for (const item of this.products) {
+    // for (const item of this.products) {
 
-      let name = item.name;
-      let price = "$ " + item.price.toLocaleString("USD", { maximumFractionDigits: 2 });
+    //   let name = item.name;
+    //   let price = "$ " + item.price.toLocaleString("USD", { maximumFractionDigits: 2 });
 
-      let divTag = document.createElement("div");
-      divTag.setAttribute("class", "col-sm-6 col-md-3");
+    //   let divTag = document.createElement("div");
+    //   divTag.setAttribute("class", "col-sm-6 col-md-3");
 
-      //card
-      let cardTag = document.createElement("div");
-      cardTag.setAttribute("class", "card");
+    //   //card
+    //   let cardTag = document.createElement("div");
+    //   cardTag.setAttribute("class", "card");
 
-      //card top
-      let imgTag = document.createElement("img");
+    //   //card top
+    //   let imgTag = document.createElement("img");
 
-      imgTag.setAttribute("class", "card-img-top");
-      if (item.img) {
-         imgTag.setAttribute("src", item.img);
-       } else {
-         imgTag.setAttribute("src", "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg");
-       }
+    //   imgTag.setAttribute("class", "card-img-top");
+    //   if (item.img) {
+    //      imgTag.setAttribute("src", item.img);
+    //    } else {
+    //      imgTag.setAttribute("src", "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg");
+    //    }
       
-       imgTag.setAttribute("style", "height:225px; width:100%; display:block");
+    //    imgTag.setAttribute("style", "height:225px; width:100%; display:block");
 
-      //card body part
-      let cardBodyTag = document.createElement("div");
-      cardBodyTag.setAttribute("class", "card-body");
+    //   //card body part
+    //   let cardBodyTag = document.createElement("div");
+    //   cardBodyTag.setAttribute("class", "card-body");
 
-      let nameTag = document.createElement("h5");
-      nameTag.setAttribute("class", "card-title");
-      nameTag.appendChild(document.createTextNode(name));
+    //   let nameTag = document.createElement("h5");
+    //   nameTag.setAttribute("class", "card-title");
+    //   nameTag.appendChild(document.createTextNode(name));
 
-      let priceTag = document.createElement("p");
-      priceTag.setAttribute("class", "card-text");
-      priceTag.appendChild(document.createTextNode(price));
+    //   let priceTag = document.createElement("p");
+    //   priceTag.setAttribute("class", "card-text");
+    //   priceTag.appendChild(document.createTextNode(price));
  
 
-      // input qty num
-      let qty = document.createElement("input");
-      qty.setAttribute("type","number");
-      qty.setAttribute("value", "quantity");
-      qty.setAttribute("placeholder","Add Quantity");
+    //   // input qty num
+    //   let qty = document.createElement("input");
+    //   qty.setAttribute("type","number");
+    //   qty.setAttribute("value", "quantity");
+    //   qty.setAttribute("placeholder","Add Quantity");
 
 
 
-      let addButton = document.createElement("input");
-      addButton.setAttribute("type", "button");
-      addButton.setAttribute("value", "Add to Cart");
-      addButton.setAttribute("class", "btn btn-primary");
-      // addButton.addEventListener("click", () => this.addToCart(item));
+    //   let addButton = document.createElement("input");
+    //   addButton.setAttribute("type", "button");
+    //   addButton.setAttribute("value", "Add to Cart");
+    //   addButton.setAttribute("class", "btn btn-primary");
+    //   // addButton.addEventListener("click", () => this.addToCart(item));
 
-      cardBodyTag.appendChild(nameTag);
-      cardBodyTag.appendChild(priceTag);
+    //   cardBodyTag.appendChild(nameTag);
+    //   cardBodyTag.appendChild(priceTag);
 
-      //adding content to card
-      cardTag.appendChild(imgTag);
-      cardTag.appendChild(cardBodyTag);
-      cardTag.appendChild(qty);
-      cardTag.appendChild(addButton);
+    //   //adding content to card
+    //   cardTag.appendChild(imgTag);
+    //   cardTag.appendChild(cardBodyTag);
+    //   cardTag.appendChild(qty);
+    //   cardTag.appendChild(addButton);
       
 
-      divTag.appendChild(cardTag);
+    //   divTag.appendChild(cardTag);
 
-      // refer the tag using id selector and append the p tag to div tag
-      document.getElementById("items")!.appendChild(divTag);
-    }
+    //   // refer the tag using id selector and append the p tag to div tag
+    //   document.getElementById("items")!.appendChild(divTag);
+    // }
   }
   //TODO: you will add to order collection in MongoDB once you place the order
   // addToCart(item: Product) {
@@ -144,5 +145,15 @@ shoppingCart:Array<any> = [];
   //   let totalRow = "<b>" + totalStr + "</b>";
   //   document.getElementById("total_price")!.innerHTML = totalRow;
   // }
+
+  addToCart(pName :any,pPrice :any){
+
+    console.log(pName);
+    console.log((<HTMLInputElement>document.getElementById(pName)).value);
+    console.log((<HTMLInputElement>document.getElementById(pPrice)));
+    
+    this.orderser.setOrder(pName,pPrice);
+
+  }
 
 }

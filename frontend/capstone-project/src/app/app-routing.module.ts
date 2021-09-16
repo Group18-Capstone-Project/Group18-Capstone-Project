@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { EmployeePanelComponent } from './employee-panel/employee-panel.component';
 import { EmployeeSignInComponent } from './employee-sign-in/employee-sign-in.component';
 import { EmployeeChangePasswordComponent } from './employee-change-password/employee-change-password.component';
+import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
   {path: "home", component:HomeComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path:"employePanel/:emailid", component:EmployeePanelComponent},
   {path:"employeSignIn", component:EmployeeSignInComponent},
   {path:"employeChangePassword", component:EmployeeChangePasswordComponent},
+  {path: "user/browseShop/myCart", component: CartComponent },
 
   {path:"",redirectTo:"userSignIn",pathMatch:"prefix"}
 ];
