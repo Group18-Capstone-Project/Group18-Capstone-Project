@@ -1,0 +1,14 @@
+<div>
+    <h2>Add Funds</h2>
+    <form [formGroup]="fundRef" (ngSubmit)="addFunds()">
+        <label>User Email: </label>
+        <input type="text" formControlName="userId"/><br/>
+        <label>Account Number: </label>
+        <input type="number" formControlName="account"/><br/>
+        <label>Amount to Add </label>
+        <input type="number" formControlName="amount"/><br/>
+        <input type="submit" value="Add Funds"/>
+        <input type="reset" value="reset"/>
+    </form>
+    {{msg}}
+</div>

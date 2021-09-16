@@ -15,10 +15,15 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { HomeComponent } from './home/home.component';
 import { EmployeeChangePasswordComponent } from './employee-change-password/employee-change-password.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+
 import { AddProductComponent } from './add-product/add-product.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
 import { DeleteProductComponent } from './delete-user/delete-user.component';
 import { ViewRequestComponent } from './view-request/view-request.component';
+
+import { UserEditComponent } from './user-edit/user-edit.component';
+import { FundAddComponent } from './fund-add/fund-add.component';
+
 
 @NgModule({
   declarations: [
@@ -36,6 +41,8 @@ import { ViewRequestComponent } from './view-request/view-request.component';
     UpdateProductComponent,
     DeleteProductComponent,
     ViewRequestComponent,
+    UserEditComponent,
+    FundAddComponent
   ],
   imports: [
     BrowserModule,

@@ -25,7 +25,7 @@ let signIn = async (request,response)=> {
 //Updates the user's details based on unique email ID, multiple things can be updated or just one
 let updateDetails = (request, response) =>{
     let user = request.body;
-    userModel.updateOne({email:user.email}, {$set:{password:user.password}}, {$set:{dob:user.dob}}, {$set:{address:user.address}}, (err, result)=>{
+    userModel.updateOne({email:user.email}, {$set:{password:user.password, dob:user.dob, address:user.address}}, (err, result)=>{
         if(!err){
             response.send(result);
         }else{
