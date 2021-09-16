@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { EmployeeService } from '../services/employee.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-panel',
@@ -25,7 +26,7 @@ export class AdminPanelComponent implements OnInit {
   addMsg?:string;
   deleteMsg?:string;
 
-  constructor(public empSer:EmployeeService) { }
+  constructor(public empSer:EmployeeService, public router:Router) { }
 
   ngOnInit(): void {
   }
@@ -43,5 +44,14 @@ export class AdminPanelComponent implements OnInit {
     this.empSer.deleteEmployee(employee)
     .subscribe(result=>this.deleteMsg=result.msg, error=>console.log(error));
     this.employeeRef.reset();
+  }
+  gotoProduct(){
+    this.router.navigate(["addProduct"])
+  }
+updateProduct(){
+    this.router.navigate(["updateProduct"])
+  }
+  deleteProduct(){
+    this.router.navigate(["deleteProduct"])
   }
 }

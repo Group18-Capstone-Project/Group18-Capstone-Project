@@ -7,6 +7,9 @@ import { UserSignUpComponent } from './user-sign-up/user-sign-up.component';
 import { HomeComponent } from './home/home.component';
 
 import {AdminLoginComponent} from './admin-login/admin-login.component';
+import {AddProductComponent} from './add-product/add-product.component';
+import { UpdateProductComponent } from './update-product/update-product.component';
+import { DeleteProductComponent } from './delete-user/delete-user.component';
 
 import { EmployeePanelComponent } from './employee-panel/employee-panel.component';
 import { EmployeeSignInComponent } from './employee-sign-in/employee-sign-in.component';
@@ -22,6 +25,9 @@ const routes: Routes = [
   {path:"employeSignIn", component:EmployeeSignInComponent},
   {path:"employeChangePassword", component:EmployeeChangePasswordComponent},
   {path:"adminLogin",component:AdminLoginComponent},
+  {path:"addProduct",component:AddProductComponent},
+  {path:"updateProduct",component:UpdateProductComponent},
+  {path:"deleteProduct",component:DeleteProductComponent},
   {path:"",redirectTo:"userSignIn",pathMatch:"prefix"}
 ];
 

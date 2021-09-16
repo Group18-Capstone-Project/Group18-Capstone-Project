@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
@@ -14,6 +15,10 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { HomeComponent } from './home/home.component';
 import { EmployeeChangePasswordComponent } from './employee-change-password/employee-change-password.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AddProductComponent } from './add-product/add-product.component';
+import { UpdateProductComponent } from './update-product/update-product.component';
+import { DeleteProductComponent } from './delete-user/delete-user.component';
+import { ViewRequestComponent } from './view-request/view-request.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +31,11 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
     AdminPanelComponent,
     HomeComponent,
     EmployeeChangePasswordComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
+    AddProductComponent,
+    UpdateProductComponent,
+    DeleteProductComponent,
+    ViewRequestComponent,
   ],
   imports: [
     BrowserModule,
