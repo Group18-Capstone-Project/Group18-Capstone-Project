@@ -1,5 +1,8 @@
-//============= Employee Model ==================
+//============= Models ==================
 const empModel = require("../model/employee.model");
+const ticketModel = require("../model/ticket.model");
+const usrModel = require("../model/user.model");
+const orderModel = require("../model/order.model");
 
 // DONE: add a generaric password for new employee such as "welcome123";
 const addEmployee = async (req, res) => {
@@ -55,7 +58,39 @@ const checkEmployee = async (request, response) =>{
 }
 
 
+const getUsersWithLockedAccount = async (req, res) => {
+    let urs = await usrModel.find({ locked:{$eq : true}});
+    res.send(urs);
+}
 
 
-module.exports = {addEmployee, deleteEmployee, checkEmployee, updateEmployee} //, updateEmployee, deleteEmployee, getEmployees};
+const getTickets = async (req, res) => {
+    let ticket = await ticketModel.find({});
+    res.send(ticket);
+}
+
+
+const unlockUser = async (req, res) => {
+    console.log("Unlocking user")
+    let usr = req.body;
+    console.log(usr)
+    let r = await usrModel.updateOne({email: usr.email}, {locked: false});
+    if(r.matchedCount == 0){
+        res.status(400).send({"msg": `employee with id:${usr.email} does not exist`});
+    }else{
+        if(r.modifiedCount != 0){
+            res.status(200).send({"msg": "users's account unlocked", "status":"Success"});
+        }
+    }
+}
+
+const getOrders = async (req, res) => {
+    let orders = await orderModel.find({});
+    res.send(orders);
+}
+
+
+
+
+module.exports = {addEmployee, deleteEmployee, checkEmployee, updateEmployee, getUsersWithLockedAccount, getTickets, unlockUser, getOrders} //, updateEmployee, deleteEmployee, getEmployees};
 

@@ -15,6 +15,8 @@ export class UserSignInComponent implements OnInit {
     password:new FormControl()
   });
   msg?:string;
+  attempt:number = 3;
+  countDown = 3;
 
   constructor(public userSer:UserService, public router:Router) { }
     
@@ -23,15 +25,35 @@ export class UserSignInComponent implements OnInit {
 
   checkUser() {
     let login = this.loginRef.value;
+    if(this.attempt>1){
     this.userSer.signInAccount(login).
     subscribe(result=>{
       if(result=="Success"){
         this.router.navigate(["userPanel", login.email]);
       }else {
           this.msg = result;
+          this.attempt--;
+          console.log(this.attempt);
       }
     },
     error=>console.log(error));
+  }else{
+    this.msg = "Failed 3 attempts.";
+    this.userSer.updateAccountStatus(login, true).subscribe(result=>{
+      if(result == "Success"){
+        setInterval(()=>{
+          this.msg = `Your account is locked. You will go to the page to raise the ticket in ${this.countDown}s`;
+          this.countDown--;
+        }, 1000);
+        setTimeout(() => {
+          this.router.navigate(["ticket"]);
+        }, 3000);
+        
+      }else{
+        this.msg = result;
+      }
+    });
+  }
     this.loginRef.reset();
   }
 

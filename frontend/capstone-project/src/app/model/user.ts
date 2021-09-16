@@ -1,4 +1,5 @@
 export interface User {
+    isLocked: boolean;
     firstname?: string,
     lastname?: string,
     email: string,
@@ -6,5 +7,5 @@ export interface User {
     dob?: string,
     phone?: number,
     address?: string,
-    userId?: number
+    locked:boolean
 }

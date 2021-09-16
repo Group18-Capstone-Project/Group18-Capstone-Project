@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { EmployeeService } from '../services/employee.service';
 import { Router } from '@angular/router';
+import { ReportService } from '../services/report.service';
+
+
 
 @Component({
   selector: 'app-admin-panel',
@@ -14,7 +17,7 @@ export class AdminPanelComponent implements OnInit {
     fname: new FormControl(),
     lname: new FormControl(),
     emailid: new FormControl('', Validators.required),
-    password: new FormControl({value:'welcome123', disabled:true})
+    password: new FormControl({value:'welcome123', disabled:true}, Validators.required)
   })
 
   // form reference for deleting the Employee
@@ -22,11 +25,26 @@ export class AdminPanelComponent implements OnInit {
     emailid:new FormControl('', Validators.required)
   })
 
+  // form reference for generating the report
+  reportForm = new FormGroup({
+    type: new FormControl(),
+    date: new FormControl(),
+    pName: new FormControl(),
+    cEmail: new FormControl()
+  })
+
   //display the message
   addMsg?:string;
   deleteMsg?:string;
 
-  constructor(public empSer:EmployeeService, public router:Router) { }
+
+  reportType?:string;
+  reports: any;
+  reportGenerated:boolean = false;
+  reportEmpty:boolean = false;
+
+  constructor(public empSer:EmployeeService, public router:Router,public reportSer:ReportService) { }
+
 
   ngOnInit(): void {
   }
@@ -38,6 +56,7 @@ export class AdminPanelComponent implements OnInit {
     .subscribe(result=>this.addMsg=result.msg, error=>console.log(error));
     this.employeeRef.reset();
   }
+  
   // delete the employee with
   employeeDelete(){
     let employee = this.employeeDeleteRef.value;
@@ -45,6 +64,7 @@ export class AdminPanelComponent implements OnInit {
     .subscribe(result=>this.deleteMsg=result.msg, error=>console.log(error));
     this.employeeRef.reset();
   }
+
   gotoProduct(){
     this.router.navigate(["addProduct"])
   }
@@ -53,5 +73,23 @@ updateProduct(){
   }
   deleteProduct(){
     this.router.navigate(["deleteProduct"])
+  }
+
+  // generate report
+  generateReport(){
+    let report = this.reportForm.value;
+    this.reportSer.getSpecificReport(report)
+    .subscribe(result=> {
+      console.log(result);
+      this.reports = result;
+      this.reportGenerated = true;
+      if(this.reports.length <= 0){
+        this.reportEmpty = true;
+      }else{
+        this.reportEmpty = false;
+      }
+    }, error=>console.log(error));
+    this.reportForm.reset();
+
   }
 }
