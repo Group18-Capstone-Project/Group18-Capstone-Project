@@ -27,8 +27,6 @@ export class AdminPanelComponent implements OnInit {
   reportForm = new FormGroup({
     type: new FormControl(),
     date: new FormControl(),
-    startDate:new FormControl(),
-    endDate:new FormControl(),
     pName: new FormControl(),
     cEmail: new FormControl()
   })

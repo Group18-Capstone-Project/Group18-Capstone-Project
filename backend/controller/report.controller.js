@@ -3,8 +3,9 @@ let orderModel = require("../model/order.model");
 let retrieveReportByDate = (req, res) => {
     // let report = JSON.parse(req.query.report);
     let report = req.query;
-    console.log(report);
-    let r = orderModel.find({ "orderPlaced": { $gte: report.startDate, $lte: report.endDate } }, (err, data) => {
+    console.log(report.startDate);
+    console.log(report.endDate);
+    orderModel.find({ orderPlaced: { $gte: report.startDate, $lte: report.endDate } }, (err, data) => {
         if (!err) {
             res.json(data);
             console.log(data);
@@ -15,8 +16,7 @@ let retrieveReportByDate = (req, res) => {
 }
 
 let retrieveReportByProduct = (req, res) => {
-    let report = JSON.parse(req.query.report);
-    orderModel.find({ [`pOrdered.${report.pName}`] : { $exists : true }  }, (err, data) => {
+    orderModel.find({ [`pOrdered.${req.query.pName}`]: { $exists: true } }, (err, data) => {
         if (!err) {
             res.json(data);
         } else {
@@ -26,16 +26,15 @@ let retrieveReportByProduct = (req, res) => {
 }
 
 let retrieveReportByEmail = (req, res) => {
-    console.log(req.query);
-    let report = JSON.parse(req.query.report);
-    orderModel.find({ "userId":report.cEmail}, (err, data) => {
+    console.log(req.query.cEmail);
+    orderModel.find({ userId:req.query.cEmail }, (err, result) => {
         if (!err) {
-            res.json(data);
-            console.log(data);
+            res.json(result);
+            console.log(result);
         } else {
             res.json(err);
         }
     })
-}
+};
 
 module.exports = { retrieveReportByDate, retrieveReportByProduct, retrieveReportByEmail }

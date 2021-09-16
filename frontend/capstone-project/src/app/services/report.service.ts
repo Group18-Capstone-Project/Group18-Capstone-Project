@@ -10,29 +10,23 @@ export class ReportService {
   constructor(public http: HttpClient) { }
 
   getSpecificReport(report: any): Observable<any> {
-
     if (report.type == 'daily') {
-      report.startDate = report.date;
-      report.endDate = report.date;
-      console.log(report);
-      return this.http.get<any>(this.api + "/getReportByDate" + '/?report=' + encodeURIComponent(JSON.stringify(report)));
+      let day = new Date(report.date).toISOString();
+      return this.http.get<any>(this.api + "/getReportByDate" + '/?startDate=' + day+'&endDate='+day);
     } else if (report.type == 'weekly') {
       let result = this.calculateTheWeek(report.date);
       report.startDate = result[0];
       report.endDate = result[1];
       console.log(report);
-      return this.http.get<any>(this.api + "/getReportByDate" + '/?report=' + encodeURIComponent(JSON.stringify(report)));
+      return this.http.get<any>(this.api + "/getReportByDate" + '/?startDate=' + result[0].toISOString()+'&endDate='+result[1].toISOString());
     } else if (report.type == 'monthly') {
       let result = this.calculateTheMonth(report.date);
-      report.startDate = result[0];
-      report.endDate = result[1];
-      console.log(report);
-      return this.http.get<any>(this.api + "/getReportByDate" + '/?report=' + encodeURIComponent(JSON.stringify(report)));
+      console.log(result);
+      return this.http.get<any>(this.api + "/getReportByDate" + '/?startDate=' + result[0].toISOString()+'&endDate='+result[1].toISOString());
     } else if (report.type == 'product') {
-      console.log(report);
-      return this.http.get<any>(this.api + "/getReportByProduct" + '/?report=' + encodeURIComponent(JSON.stringify(report)));
+      return this.http.get<any>(this.api + "/getReportByProduct" + '/?pName=' + report.pName);
     } else if (report.type == 'customer') {
-      return this.http.get<any>(this.api + "/getReportByEmail" + '/?report=' + encodeURIComponent(JSON.stringify(report)));
+      return this.http.get<any>(this.api + "/getReportByEmail" + '/?cEmail=' + report.cEmail);
     } else {
       console.log("undefined report type");
       //returns the empty Observable
