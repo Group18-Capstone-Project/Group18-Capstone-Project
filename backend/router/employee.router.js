@@ -11,6 +11,10 @@ const orderController = require("../controller/order.controller");
 router.post("/addEmployee", empController.addEmployee)
 router.delete("/deleteEmployee/:emailid", empController.deleteEmployee);
 router.put("/updatePassword", empController.updateEmployee);
+router.get("/lockedAccount", empController.getUsersWithLockedAccount);
+router.get("/getTickets", empController.getTickets);
+router.put("/unlockUser", empController.unlockUser);
+router.get("/getOrders", empController.getOrders);
 
 // Request
 router.post("/sendProductRequest", reqController.sendProductRequest)

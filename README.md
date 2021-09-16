@@ -11,10 +11,16 @@ Subash Mainali: task completed
     3. send product request from employee
     4. update order status of product from employee
     5. employee can change the password on first login
+    6. unlock users account
+    7. resolving tickets
  - Frontend:
     1. Created the landing page(nav bar)
     2. Employee landing panel
     3. Employee change password panel, once the password is changed, rediret to Employee landing panel
+    4. send request to admin
+    5. update order satus 
+    6. unlock users
+    7. edit employee profile 
 
 
 #### Jing Lin (participant 2): work done so far
