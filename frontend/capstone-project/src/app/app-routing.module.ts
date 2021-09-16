@@ -11,6 +11,7 @@ import {AdminLoginComponent} from './admin-login/admin-login.component';
 import { EmployeePanelComponent } from './employee-panel/employee-panel.component';
 import { EmployeeSignInComponent } from './employee-sign-in/employee-sign-in.component';
 import { EmployeeChangePasswordComponent } from './employee-change-password/employee-change-password.component';
+import { TicketComponent } from './ticket/ticket.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { FundAddComponent } from './fund-add/fund-add.component';
 
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path:"userSignIn",component:UserSignInComponent},
   {path:"userSignUp",component:UserSignUpComponent},
   {path:"userPanel/:user",component:UserPanelComponent},
+  {path:"ticket", component:TicketComponent},
   {path:"adminPanel", component:AdminPanelComponent},
   {path:"employePanel/:emailid", component:EmployeePanelComponent},
   {path:"employeSignIn", component:EmployeeSignInComponent},
