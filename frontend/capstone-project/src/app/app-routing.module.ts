@@ -9,12 +9,14 @@ import { HomeComponent } from './home/home.component';
 import { EmployeePanelComponent } from './employee-panel/employee-panel.component';
 import { EmployeeSignInComponent } from './employee-sign-in/employee-sign-in.component';
 import { EmployeeChangePasswordComponent } from './employee-change-password/employee-change-password.component';
+import { TicketComponent } from './ticket/ticket.component';
 
 const routes: Routes = [
   {path: "home", component:HomeComponent},
   {path:"userSignIn",component:UserSignInComponent},
   {path:"userSignUp",component:UserSignUpComponent},
   {path:"userPanel/:user",component:UserPanelComponent},
+  {path:"ticket", component:TicketComponent},
   {path:"adminPanel", component:AdminPanelComponent},
   {path:"employePanel/:emailid", component:EmployeePanelComponent},
   {path:"employeSignIn", component:EmployeeSignInComponent},

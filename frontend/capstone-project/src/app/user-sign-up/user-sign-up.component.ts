@@ -28,7 +28,6 @@ export class UserSignUpComponent implements OnInit {
 
   accountCreate() {
     let account = this.accountRef.value;
-
     this.userSer.signUpAccount(account)
     .subscribe(result=>this.msg=result,error=>console.log(error));
     this.accountRef.reset();

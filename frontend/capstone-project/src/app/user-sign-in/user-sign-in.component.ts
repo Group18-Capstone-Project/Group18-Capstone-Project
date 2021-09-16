@@ -37,11 +37,18 @@ export class UserSignInComponent implements OnInit {
     },
     error=>console.log(error));
   }else{
+    this.msg = "Failed 3 attempts.";
     this.userSer.updateAccountStatus(login, true).subscribe(result=>{
       if(result == "Success"){
-        this.msg = "Your account is locked please raise the ticket";
-        //TODO: Raise the ticket
-        console.log("raise the ticket");
+        let countDown = 3;
+        setInterval(()=>{
+          this.msg = `Your account is locked. You will go to the page to raise the ticket in ${countDown}s`;
+          countDown--;
+          setTimeout(() => {
+            this.router.navigate(["ticket"]);
+          }, 3000);
+        }, 1000);
+        
       }else{
         this.msg = result;
       }
