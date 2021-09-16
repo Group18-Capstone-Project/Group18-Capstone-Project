@@ -14,6 +14,9 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { HomeComponent } from './home/home.component';
 import { EmployeeChangePasswordComponent } from './employee-change-password/employee-change-password.component';
 import { TicketComponent } from './ticket/ticket.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
+import { FundAddComponent } from './fund-add/fund-add.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,9 @@ import { TicketComponent } from './ticket/ticket.component';
     HomeComponent,
     EmployeeChangePasswordComponent,
     TicketComponent
+    AdminLoginComponent,
+    UserEditComponent,
+    FundAddComponent
   ],
   imports: [
     BrowserModule,

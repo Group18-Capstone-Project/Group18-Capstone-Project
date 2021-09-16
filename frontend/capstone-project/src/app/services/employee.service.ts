@@ -7,6 +7,7 @@ import { Employee } from '../model/employee';
   providedIn: 'root'
 })
 export class EmployeeService {
+
   constructor(public http: HttpClient) { }
   httpOptions = {
     headers: new HttpHeaders({
@@ -33,4 +34,36 @@ export class EmployeeService {
     return this.http.put<any>(`${this.ROOT}/updatePassword`, emp, this.httpOptions)
 
   }
+
+  sendRequestToAdmin(req: any) :Observable<any> {
+    return this.http.post(`${this.ROOT}/sendProductRequest`, req, this.httpOptions);
+  }
+
+  getUrsWithLockedAcct() : Observable<any> {
+    return this.http.get(`${this.ROOT}/lockedAccount`, this.httpOptions);
+  }
+
+  getTickets() : Observable<any> {
+    return this.http.get(`${this.ROOT}/getTickets`, this.httpOptions);
+  }
+
+  // unlock user account
+  unlockAccount(email:any) : Observable<any> {
+    return this.http.put(`${this.ROOT}/unlockUser`,email, this.httpOptions);
+  }
+
+  // get the orders
+  getOrders() : Observable<any> {
+    return this.http.get(`${this.ROOT}/getOrders`, this.httpOptions);
+  }
+
+
+  // update order status
+  updateOrder(order: any) : Observable<any> {
+    return this.http.put(`${this.ROOT}/updateOrderStatus`, order, this.httpOptions);
+  }
+
+
+
+
 }

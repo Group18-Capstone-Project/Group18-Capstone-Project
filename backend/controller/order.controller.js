@@ -12,7 +12,7 @@ const updateOrderStatus = async (req, res) => {
         res.status(400).send({"msg": `order with userid:${order.userId} does not exist`});
     }else{
         if(r.modifiedCount != 0){
-            res.status(200).send({"msg": "order updated"});
+            res.status(200).send({"msg": "order updated", "status":"Success"});
         }
     }
 

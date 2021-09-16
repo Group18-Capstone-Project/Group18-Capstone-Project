@@ -27,4 +27,8 @@ export class UserService {
   raiseTicket(ticket: Ticket): Observable<any> {
     return this.http.post(this.user_port + "/addTicket", ticket, { responseType: 'text' });
   }
+
+  changeAccount(user: User): Observable<any>{
+    return this.http.put(this.user_port + "/updateUser", user, {responseType: 'text'});
+  }
 }
