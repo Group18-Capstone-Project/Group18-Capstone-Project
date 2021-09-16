@@ -32,6 +32,6 @@ export class ProductsService {
 		return this.http.put(this.host+ "/api/product"+"/updateProduct", pro, { responseType: 'text' });
 	  }
 	deleteProduct(pro:Product): Observable<any>{
-		return this.http.delete(this.host+ "/api/product"+"/deleteProduct/"+ pro.productCode);
+		return this.http.delete(this.host+ "/api/product"+"/deleteProduct/"+ pro.productCode,{responseType:'text'});
 	  }
 }

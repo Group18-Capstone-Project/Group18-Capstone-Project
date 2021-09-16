@@ -54,10 +54,11 @@ let getAll = async (req, res, next) => {
 
 let updateProduct = (request,response)=> {
     let product = request.body;
+    console.log(product);
     var myquery = { productCode: product.productCode };
-    proModel.updateOne(myquery,{$set:{price:product.price}}, {$set:{quantity:product.quantity}},{$set:{discount:product.quantity}},(err,result)=> {
+    proModel.updateOne(myquery,{$set:{price:product.price,quantity:product.quantity,discount:product.quantity}},(err,result)=> {
         if(!err){
-            response.send("Update Product: "+product.productCode);
+            response.send("Updated Product Successfully");
         }else {
             response.send(err);
         }

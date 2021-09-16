@@ -9,6 +9,15 @@
     <title>View Request</title>
 </head>
 <body>
-    <div id = "items"></div>
+        <div>
+                <table>
+                    <tr>
+                      <th>Description</th>
+                    </tr>
+                    <tr *ngFor="let u of requests">
+                      <td>{{u.description}}</td>
+                    </tr>
+                </table>
+            </div>
 </body>
 </html>

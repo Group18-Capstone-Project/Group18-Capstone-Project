@@ -74,6 +74,9 @@ updateProduct(){
   deleteProduct(){
     this.router.navigate(["deleteProduct"])
   }
+  gotoViewComponent(){
+    this.router.navigate(["viewRequest"])
+  }
 
   // generate report
   generateReport(){
