@@ -35,21 +35,6 @@ let getAll = async (req, res, next) => {
 
 };
 
-// aakash
-
-// let getAllProductDetails =(request,response)=>{
-
-//     productModel.find({},(err,data)=>{
-//         if(!err){
-//             response.json(data);
-//         }
-//         else{
-//             response.json(err);
-//         }
-//     })
-
-// }
-
 
 
 let updateProduct = (request,response)=> {

@@ -39,7 +39,7 @@ constructor(public http: HttpClient) { }
 
 	addOrder(order:any){
 
-		return this.http.post(this.ROOT+ "/addOrder",order,this.httpOptions);
+		return this.http.post(this.ROOT+ "/addOrder",order,{responseType:'text'});
 
 	}
 

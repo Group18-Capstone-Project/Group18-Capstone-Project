@@ -41,7 +41,7 @@ let addOrder = (request, response) =>{
     orderModel.insertMany(order, (err, data) => {
 
         if(!err){
-            response.json(data);
+            response.send("Order Placed Successfully");
         }
         else{
             response.json(err);

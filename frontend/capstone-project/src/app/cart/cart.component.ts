@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 
 
+
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -17,7 +18,7 @@ export class CartComponent implements OnInit {
   
 
 
-  msg?:string[];
+  orderMsg?:string;
 
   shoppingCart : Cart[] = [];
 
@@ -29,7 +30,10 @@ export class CartComponent implements OnInit {
   constructor(public ordersService:OrdersService, public activatedRoute:ActivatedRoute) {
 
    }
-
+// 
+   displayedColumns: string[] = ['name', 'price', 'quantity'];
+   
+// 
   ngOnInit(): void {
 
     this.activatedRoute.params.subscribe(data => this.userId = data.userId);
@@ -93,7 +97,7 @@ export class CartComponent implements OnInit {
    }
 
   this.ordersService.addOrder(order)
-  .subscribe(result=>console.log(result),error=>console.log(error));
+    .subscribe(result=>this.orderMsg = result,error=>console.log(error));
 
   }
 

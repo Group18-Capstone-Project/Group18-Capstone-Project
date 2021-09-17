@@ -25,6 +25,8 @@ import { ViewRequestComponent } from './view-request/view-request.component';
 
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { FundAddComponent } from './fund-add/fund-add.component';
+import {MatTableModule} from '@angular/material/table';
+import { CdkColumnDef } from '@angular/cdk/table';
 
 
 @NgModule({
@@ -52,9 +54,10 @@ import { FundAddComponent } from './fund-add/fund-add.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule
   ],
-  providers: [],
+  providers: [CdkColumnDef],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
