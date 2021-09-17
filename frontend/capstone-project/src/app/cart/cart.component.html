@@ -5,4 +5,20 @@
     </div>
 </div>
 
-    {{msg}}
+<table>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+    </tr>
+    <tr *ngFor="let list of shoppingCart">
+      <td>{{list.name}}</td>
+      <td>{{list.price}}</td>
+      <td>{{list.quantity}}</td>
+    </tr>
+</table>
+
+<i>Total Price</i><h4>{{finalPrice}}</h4><br>
+<i>Total Quantity</i><h4>{{finalQty}}</h4>
+
+<button type="button" class="btn btn-dark" (click)="placeOrder()">Place Order</button>

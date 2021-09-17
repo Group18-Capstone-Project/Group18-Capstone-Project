@@ -1,6 +1,7 @@
 <h2>Welcome {{userName}} to User Panel (Grocers) </h2>
 <a routerLink=""> Edit Profile</a> |
-<a routerLink=""> Manage Account</a> |
+<a routerLink="/userEdit"> Manage Account</a> |
+<a routerLink="/addFunds"> Add Funds</a> |
 <a routerLink=""> Order History</a> |
 <a routerLink=""> Raise Ticket</a> |
 <a routerLink="/userSignIn"> Log Out</a>
@@ -8,12 +9,13 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <label>Cart Size:</label><label id="size">0</label>
+            <label>Cart Size:</label><label id="size">{{cartSize}}</label>
         </div>
         <div class="col">
-            <form>
-                <input type="submit" value="Check Out" routerLink="/user/browseShop/myCart">
-            </form>
+           
+                <!-- <input type="submit" value="Check Out" routerLink="/user/browseShop/myCart"> -->
+                <input type="button" value="Check Out" (click)="sendCart()">
+          
         </div>
     </div>
 </div>
@@ -34,7 +36,7 @@
                             </div>
 
                             <input type="number" class="form-control"  id="{{product.name}}" placeholder="quantity" min="1" style="margin-top: 5px;">
-                            <button type="button" class="btn btn-outline-info" style="margin: 5px;" (click)="addToCart(product.name,product.price)">Add Item</button>
+                            <button type="button" class="btn btn-outline-info" style="margin: 5px;" (click)="addToCart(product)">Add Item</button>
                         </div>
 
 

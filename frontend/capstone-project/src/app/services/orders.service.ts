@@ -1,5 +1,7 @@
+import { Order } from './../model/order';
+import { Cart } from './../model/cart';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
@@ -10,24 +12,35 @@ import { catchError, tap } from 'rxjs/operators';
 
 export class OrdersService {
 
-order:any[] = [];
+order:Cart[] = [];
 
 
-//   host = "http://localhost:9090";
-// 	endpoint = "/orders";
+constructor(public http: HttpClient) { }
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+    })
+  };
 
-  constructor(private http: HttpClient) { }
+  ROOT = "http://localhost:9090/api/user";
 
 	getOrder(){
+
 		return this.order;
 
 	}
 
-	setOrder(name:any, price:any, ){
+	setOrder(shoppingCart:Cart[]){
 
-		this.order.push(name);
-		this.order.push(price);
-		
+	
+		this.order=shoppingCart;
+
+	}
+
+	addOrder(order:any){
+
+		return this.http.post(this.ROOT+ "/addOrder",order,this.httpOptions);
+
 	}
 
 

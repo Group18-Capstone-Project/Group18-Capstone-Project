@@ -1,11 +1,140 @@
 <div>
-    <h1>Welcome to the Employee Panel</h1>
+    <h1>Welcome {{emailid}} to the Employee Panel</h1>
+    <div class="container">
 
-    <a routerLink=""> Edit Profile</a> |
-    <a routerLink=""> Manage Account</a> |
-    <a routerLink=""> Order Status</a> |
-    <a routerLink=""> Check Tickets</a> |
-    <a routerLink="/empSignIn"> Log Out</a>
+        <section class="empSection" >
+            <button type="button" class="btn btn-info" (click)="switchToEditProfile()">Edit Profile</button>
+            <div id="profile"  *ngIf="canDisplayEditProfile">
+                <h2>Change your password</h2>
+                <form [formGroup]="empRef" (ngSubmit)="changePassword()">
+                    <label>Employee ID: </label>
+                    <input type="text" formControlName="emailid" /><br/>
+                    <label>New Password: </label>
+                    <input type="password" formControlName="password" /><br/>
+                    <!-- <input type="submit" value="Change Password"/> -->
+                    <button type="submit" class="btn btn-dark" >Change Password</button>
+                    <input type="reset" class="btn btn-dark" value="reset"/>
+                </form>
+                {{msg}}
 
-    {{emailid}}
+               
+            </div>
+        </section>
+
+        <section class="empSection" >
+            <!-- <a routerLink=""> Manage Accounts</a> -->
+            <button type="button" class="btn btn-info" (click)="switchToMangeAccount()"> Manage Accounts</button> 
+            <div id="account" *ngIf="canDisplayMangeAccount">
+                <button type="button" class="btn btn-dark" (click)="getUsersWithLockedAcct()">Get Locked Users</button>
+                <div  *ngIf="showLockedUsers">
+                    <table>
+                        <tr>
+                          <th>Firstname</th>
+                          <th>Lastname</th>
+                          <th>email</th>
+                          <th>Loacked</th>
+                        </tr>
+                        <tr *ngFor="let u of usersWithLockedAcct">
+                          <td>{{u.firstname}}</td>
+                          <td>{{u.lastname}}</td>
+                          <td>{{u.email}}</td>
+                          <td>{{u.locked}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <button type="button" class="btn btn-dark" (click)="getTickets()">Get Tickets</button>
+                <div  *ngIf="showTickets">
+                    <table>
+                        <tr>
+                          <th>User Id</th>
+                          <th>description</th>
+    
+                        </tr>
+                        <tr *ngFor="let t of tickets">
+                          <td>{{t.userId}}</td>
+                          <td>{{t.description}}</td>
+   
+                        </tr>
+                    </table>
+                </div>
+                <div id="unlockAccountDiv">
+                    <form [formGroup]="unlockRef" (ngSubmit)="unlockAccount()">
+                        <label> Email Id / User ID: </label>
+                        <input type="text" formControlName="email" /><br/>
+                        <!-- <input type="submit" value="Change Password"/> -->
+                        <button type="submit" class="btn btn-dark" >Unlock User</button>
+                        <input type="reset" class="btn btn-dark" value="reset"/>
+                    </form>
+                    {{unlockMsg}}
+                </div>
+            </div>
+        </section>
+
+        <section class="empSection" >
+            <!-- <a routerLink=""> Order Status</a>  -->
+            <button type="button" class="btn btn-info" (click)="switchToUpdateOrder()">Update Order</button>
+            <div id="order" *ngIf="canDisplayUpdateOrder">
+                <button type="button" class="btn btn-dark" (click)="getOrders()">Get Orders</button>
+                <div id="ordersDiv">
+                    <table>
+                        <tr>
+                          <th>User ID</th>
+                          <th>Products</th>
+                          <th>Total Price</th>
+                          <th>Quantity</th>
+                          <th>Status</th>
+                          <th>Order Placed Time</th>
+                        </tr>
+                        <tr *ngFor="let o of orders">
+                          <td>{{o.userId}}</td>
+                          <td>{{o.pOrdered}}</td>
+                          <td>{{o.pTotalPrice}}</td>
+                          <td>{{o.pQuantity}}</td>
+                          <td>{{o.status}}</td>
+                          <td>{{o.orderPlaced}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <form [formGroup]="orderRef" (ngSubmit)="updateOrder()">
+                    <label> Email Id / User ID: </label>
+                    <input type="text" formControlName="userId" />
+                    <div class="dropdown">
+                        <label> Status:  </label>
+                        <select formControlName="status" id="cars">
+                            <option value="Shipped">Shipped</option>
+                            <option value="Out for delivery">Out for delivery</option>
+                            <option value="Delivered">Delivered</option>
+                            <option value="Cancelled">Cancelled</option>
+                          </select>
+                        <!-- <input type="submit" value="Change Password"/> -->
+                        <div>
+                            <button type="submit" class="btn btn-dark" >Update Order Status</button>
+                            <input type="reset" class="btn btn-dark" value="reset"/>
+                        </div>
+
+                    </div>
+
+                </form>
+                {{orderMsg}}
+            </div>
+        </section>
+
+        <!-- Send request to the admin -->
+        <section class="empSection" >
+            <!-- <a routerLink=""> Send Request</a> -->
+            <button type="button" class="btn btn-info"  (click)="switchToSendRequest()">Send Request</button> 
+            <div id="request" *ngIf="canDisplaySendRequest">
+                <form [formGroup]="requestRef" (ngSubmit)="sendRequest()">
+                    <label>Request Description: </label>
+                    <input type="text" formControlName="description" /><br/>
+                    <button type="submit" class="btn btn-dark" >Send Request</button>
+                    <input type="reset" class="btn btn-dark" value="reset"/>
+                </form>
+            </div>
+            {{descMsg}}
+        </section>
+        <!-- <a routerLink="/empSignIn"> Log Out</a> -->
+        <button type="button" class="btn btn-primary" routerLink = "/employeSignIn">Sign Out</button>
+    </div>
+   
 </div>

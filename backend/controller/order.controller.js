@@ -12,7 +12,7 @@ const updateOrderStatus = async (req, res) => {
         res.status(400).send({"msg": `order with userid:${order.userId} does not exist`});
     }else{
         if(r.modifiedCount != 0){
-            res.status(200).send({"msg": "order updated"});
+            res.status(200).send({"msg": "order updated", "status":"Success"});
         }
     }
 
@@ -34,5 +34,25 @@ let showOrderStatus = (request, response) =>{
     } )
 }
 
+let addOrder = (request, response) =>{
 
-module.exports = {updateOrderStatus, showOrderStatus};
+    let order = request.body;
+
+    orderModel.insertMany(order, (err, data) => {
+
+        if(!err){
+            response.json(data);
+        }
+        else{
+            response.json(err);
+        }
+    } )
+}
+
+
+
+
+
+
+
+module.exports = {updateOrderStatus, showOrderStatus, addOrder};

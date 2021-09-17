@@ -1,13 +1,14 @@
 <div>
     <h2 style="text-align:center">Welcome to Admin Panel</h2><br>
+    <!--TODO: change to admin login after Bhuwan is done-->
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-4">
                 <h4>Product CRUD</h4><br>
-                <button type="button">Add Product</button><br><br>
-                <button type="button">Delete Product</button><br><br>
-                <button type="button">Update Product</button><br><br>
-                <button type="button">View Requests</button><br><br>
+                <button type="button" (click)="gotoProduct()">Add Product</button><br><br>
+                <button type="button" (click)="deleteProduct()">Delete Product</button><br><br>
+                <button type="button" (click)="updateProduct()">Update Product</button><br><br>
+                <button type="button" (click)="gotoViewComponent()">View Requests</button><br><br>
             </div>
             <div class="col-4">
                 <h4>Employee Actions</h4><br>
@@ -24,9 +25,9 @@
                         <input type="email" formControlName="emailid" required>
                         <br>
                         <label>Password: </label>
-                        <input type="text" formControlName="password" placeholder="welcome123" [disabled]="true"> <br>
+                        <input type="text" formControlName="password" placeholder="welcome123"> <br>
                         <span>(it's the password you use for first login, and the system will ask you to change the
-                            password)</span>
+                            password for first login)</span>
                         <br>
                         <input type="submit" value="Add New Employee">
                         <input type="reset" value="Clear">
@@ -52,10 +53,67 @@
     <div style=" text-align:center">
         <div>
             <h6>Generate reports</h6>
+            <form [formGroup]="reportForm" (ngSubmit)="generateReport()">
+                <label>Select a type of report</label>
+                <br>
+                <input type="radio" formControlName="type" value="daily">
+                <label for="daily">Daily Report </label>&nbsp;
+                <input type="radio" formControlName="type" value="weekly">
+                <label for="weekly">Weekly Report </label>&nbsp;
+                <input type="radio" formControlName="type" value="monthly">
+                <label for="monthly">Monthly Report </label>&nbsp;
+                <br>
+                <div *ngIf="reportForm.value.type == 'daily' || reportForm.value.type == 'weekly' || reportForm.value.type == 'monthly'">
+                    <input type="date" formControlName="date">
+                </div>
+                <input type="radio" formControlName="type" value="product">
+                <label for="product">Product Report</label>&nbsp;
+                <input type="radio" formControlName="type" value="customer">
+                <label for="user">Customer Report</label>&nbsp;
+                <div *ngIf="reportForm.value.type === 'product'">
+                    <label>Product Name:</label> 
+                    <input type="text" formControlName="pName">
+                </div>
+                <div *ngIf="reportForm.value.type === 'customer'">
+                    <label>Customer Email:</label> 
+                    <input type="text" formControlName="cEmail">
+                </div>
+                <br>
+                <input type="submit" value="Generate the Report">
+            </form>
         </div>
+        <p *ngIf="reportGenerated && reportEmpty">No Result Found</p>
+        <table *ngIf="reportGenerated && !reportEmpty">
+            <thead>
+                <tr>
+                    <th>User Email</th>
+                    <th>Items</th>
+                    <th>Total Price</th>
+                    <th>Total Quantity</th>
+                    <th>Status</th>
+                    <th>Order Placed Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let report of reports">
+                    <td>{{report.userId}}</td>
+                    <td>
+                        <div *ngFor="let item of report.pOrdered | keyvalue">
+                            <td>{{item.key}}</td>
+                            <td>{{item.value}}</td>
+                        </div>
+                    </td>
+                    <td>${{report.pTotalPrice}}</td>
+                    <td>{{report.pQuantity}}</td>
+                    <td>{{report.status}}</td>
+                    <td>{{report.orderPlaced}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     <br>
     <div style=" text-align:center">
+            <a routerLink="/userSignIn">Log Out</a>
     </div>
     
 </div>

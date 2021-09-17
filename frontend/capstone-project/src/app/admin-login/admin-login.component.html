@@ -1,0 +1,20 @@
+<div>
+    <h2 style="text-align: center">Login Page</h2>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-2">
+                <form [formGroup]="loginRef" (ngSubmit)="checkAdmin()">
+                    <label>Email: </label>
+                    <input type="email"  formControlName="email"/><br/>
+                    <label>Password: </label>
+                    <input type="password" formControlName="password"/><br/>
+                    <input type="submit" style="margin: 10px" value="Sign In"/>
+                    <input type="reset" style="margin: 10px" value="reset"/>
+                </form>
+            </div>
+        </div>
+     </div>
+    <br/>
+    <br/>
+    {{msg}}
+</div>

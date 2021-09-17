@@ -1,0 +1,39 @@
+
+<div>
+    <h2 style="text-align: center">Adding Product</h2>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-2">
+                <form [formGroup]="productRef" (ngSubmit)="addProduct()">
+                    <label>Name: </label>
+                    <input type="text" formControlName="name"> 
+                    <br>
+                    <label>Price: </label>
+                    <input type="text" formControlName="price"> 
+                    <br>
+                    <label>Img: </label>
+                    <input type="text" formControlName="img"> 
+                    <br>
+                    <label>Quantity: </label>
+                    <input type="text" formControlName="quantity"> 
+                    <br>
+                    <label>Discount(inPercent): </label>
+                    <input type="text" formControlName="discount"> 
+                    <br>
+                    <label>Product Code: </label>
+                    <input type="text" formControlName="productCode"> 
+                    <br>
+                    <br>
+                    <input type="submit" style="margin: 10px" value="Add">
+                    <input type="reset" style="margin: 10px" value="reset">
+                    <a routerLink="/adminPanel">Back</a>
+                </form>
+                
+                </div>
+                </div>
+                </div>
+
+
+    <br/>
+    {{msg}}
+</div>

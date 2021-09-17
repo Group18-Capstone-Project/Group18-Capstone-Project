@@ -25,5 +25,13 @@ export class ProductsService {
 				catchError(error => throwError(error))
 			)
 	}
-
+	addProduct(pro:Product): Observable<any>{
+		return this.http.post(this.host+ "/api/product"+"/addProduct", pro, { responseType: 'text' });
+	  }
+	updateProduct(pro:Product): Observable<any>{
+		return this.http.put(this.host+ "/api/product"+"/updateProduct", pro, { responseType: 'text' });
+	  }
+	deleteProduct(pro:Product): Observable<any>{
+		return this.http.delete(this.host+ "/api/product"+"/deleteProduct/"+ pro.productCode,{responseType:'text'});
+	  }
 }
