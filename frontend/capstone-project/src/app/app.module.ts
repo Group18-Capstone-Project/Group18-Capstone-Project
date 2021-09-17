@@ -14,6 +14,7 @@ import { EmployeeSignInComponent } from './employee-sign-in/employee-sign-in.com
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { HomeComponent } from './home/home.component';
 import { EmployeeChangePasswordComponent } from './employee-change-password/employee-change-password.component';
+import { CartComponent } from './cart/cart.component';
 import { TicketComponent } from './ticket/ticket.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 
@@ -37,6 +38,7 @@ import { FundAddComponent } from './fund-add/fund-add.component';
     AdminPanelComponent,
     HomeComponent,
     EmployeeChangePasswordComponent,
+    CartComponent,
     TicketComponent,
     AdminLoginComponent,
     AddProductComponent,

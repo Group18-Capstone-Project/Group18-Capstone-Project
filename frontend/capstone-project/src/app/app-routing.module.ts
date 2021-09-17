@@ -15,9 +15,13 @@ import { ViewRequestComponent } from './view-request/view-request.component';
 import { EmployeePanelComponent } from './employee-panel/employee-panel.component';
 import { EmployeeSignInComponent } from './employee-sign-in/employee-sign-in.component';
 import { EmployeeChangePasswordComponent } from './employee-change-password/employee-change-password.component';
+
+import { CartComponent } from './cart/cart.component';
+
 import { TicketComponent } from './ticket/ticket.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { FundAddComponent } from './fund-add/fund-add.component';
+
 
 const routes: Routes = [
   {path: "home", component:HomeComponent},
@@ -29,6 +33,9 @@ const routes: Routes = [
   {path:"employePanel/:emailid", component:EmployeePanelComponent},
   {path:"employeSignIn", component:EmployeeSignInComponent},
   {path:"employeChangePassword", component:EmployeeChangePasswordComponent},
+
+  {path: "myCart/:userID", component: CartComponent },
+
   {path:"adminLogin",component:AdminLoginComponent},
 
   {path:"addProduct",component:AddProductComponent},
@@ -37,6 +44,7 @@ const routes: Routes = [
   {path:"viewRequest",component:ViewRequestComponent},
   {path:"userEdit", component:UserEditComponent},
   {path:"addFunds", component:FundAddComponent},
+
 
   {path:"",redirectTo:"userSignIn",pathMatch:"prefix"}
 ];

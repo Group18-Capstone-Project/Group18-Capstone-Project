@@ -34,5 +34,25 @@ let showOrderStatus = (request, response) =>{
     } )
 }
 
+let addOrder = (request, response) =>{
 
-module.exports = {updateOrderStatus, showOrderStatus};
+    let order = request.body;
+
+    orderModel.insertMany(order, (err, data) => {
+
+        if(!err){
+            response.json(data);
+        }
+        else{
+            response.json(err);
+        }
+    } )
+}
+
+
+
+
+
+
+
+module.exports = {updateOrderStatus, showOrderStatus, addOrder};

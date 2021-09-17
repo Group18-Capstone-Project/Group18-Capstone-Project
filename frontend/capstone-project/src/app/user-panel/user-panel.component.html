@@ -9,17 +9,38 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <label>Cart Size:</label><label id="size">0</label>
+            <label>Cart Size:</label><label id="size">{{cartSize}}</label>
         </div>
         <div class="col">
-            <form>
-                <input type="submit" value="Check Out">
-            </form>
+           
+                <!-- <input type="submit" value="Check Out" routerLink="/user/browseShop/myCart"> -->
+                <input type="button" value="Check Out" (click)="sendCart()">
+          
         </div>
     </div>
 </div>
-<div class="container" id="items_container">
-    <div class="row" id="items">
-        
+
+        <div class="container-fluid bg-light"> 
+            <div class="container bg-light" id="mainContent">
+
+                <div class="row" id="blogRow">
+                    <div class="col-sm-6 col-md-3" *ngFor="let product of products">
+
+                        <div class="card bg-dark text-white">
+                            <img src="{{product.img}}" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">{{product.name}}</h5>
+                                <h5>${{product.price}}</h5>
+                                <!-- <p class="card-text">Products</p> -->
+
+                            </div>
+
+                            <input type="number" class="form-control"  id="{{product.name}}" placeholder="quantity" min="1" style="margin-top: 5px;">
+                            <button type="button" class="btn btn-outline-info" style="margin: 5px;" (click)="addToCart(product)">Add Item</button>
+                        </div>
+
+
     </div>
+</div>
+</div>
 </div>
