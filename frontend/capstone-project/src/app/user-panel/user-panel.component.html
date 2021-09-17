@@ -9,16 +9,14 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <label>Cart Size:</label><label id="size">{{cartSize}}</label>
+            <label id="size" style="float: right;">Cart Size: {{cartSize}}</label>
         </div>
         <div class="col">
-           
-                <!-- <input type="submit" value="Check Out" routerLink="/user/browseShop/myCart"> -->
-                <input type="button" value="Check Out" (click)="sendCart()">
-          
+                <input type="button" value="Check Out" (click)="sendCart()" style="float:right">
         </div>
     </div>
 </div>
+<br>
 
         <div class="container-fluid bg-light"> 
             <div class="container bg-light" id="mainContent">
@@ -31,7 +29,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{product.name}}</h5>
                                 <h5>${{product.price}}</h5>
-                                <!-- <p class="card-text">Products</p> -->
+                                <p class="card-text">Products</p>
 
                             </div>
 
