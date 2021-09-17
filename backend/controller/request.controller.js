@@ -24,6 +24,17 @@ const fetchAll = async (req, res, next) => {
         .catch(next)
 
 };
+const deleteRequest = (request,response)=> {
+    let requestId = request.params.requestId;
+    console.log(requestId);
+    reqModel.deleteOne({_id:requestId},(err,result)=> {
+        if(!err){
+            response.send("Deleted Successfully")
+        }else {
+            response.send(err);
 
+        }
+    })
+ }
 
-module.exports = {sendProductRequest, fetchAll};
+module.exports = {sendProductRequest, fetchAll,deleteRequest};

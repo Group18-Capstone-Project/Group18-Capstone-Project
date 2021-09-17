@@ -12,12 +12,24 @@
         <div>
                 <table>
                     <tr>
+                      <th>ID</th>
                       <th>Description</th>
                     </tr>
                     <tr *ngFor="let u of requests">
+                      <td>{{u._id}}</td>
                       <td>{{u.description}}</td>
                     </tr>
                 </table>
             </div>
+            <br><br>
+            <div>
+                    <form [formGroup]="productRef" (ngSubmit)="deleteRequest()">
+                            <label>Enter Request Id to Resolve Request: </label>
+                            <input type="text" formControlName="_id"> 
+                            <input type="submit" style="margin: 5px" value="Resolve">
+                            <a routerLink="/adminPanel">Back</a>
+                        </form>  
+            </div>
+            {{msg}}
 </body>
 </html>

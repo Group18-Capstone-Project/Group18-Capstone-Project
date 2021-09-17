@@ -47,6 +47,7 @@ export class EmployeePanelComponent implements OnInit {
 
   requestRef = new FormGroup({
     description: new FormControl("",[Validators.required]),
+    _id:new FormControl()
   })
 
   orderRef = new FormGroup({

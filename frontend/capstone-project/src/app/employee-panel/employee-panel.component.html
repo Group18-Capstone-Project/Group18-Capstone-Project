@@ -127,6 +127,8 @@
                 <form [formGroup]="requestRef" (ngSubmit)="sendRequest()">
                     <label>Request Description: </label>
                     <input type="text" formControlName="description" /><br/>
+                    <label>Request Id: </label>
+                    <input type="text" formControlName="_id" /><br/>
                     <button type="submit" class="btn btn-dark" >Send Request</button>
                     <input type="reset" class="btn btn-dark" value="reset"/>
                 </form>
