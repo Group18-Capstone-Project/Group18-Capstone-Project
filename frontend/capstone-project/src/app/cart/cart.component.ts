@@ -18,7 +18,7 @@ export class CartComponent implements OnInit {
   
 
 
-  orderMsg?: string;
+  orderMsg?:string;
 
   shoppingCart : Cart[] = [];
 
@@ -97,7 +97,7 @@ export class CartComponent implements OnInit {
    }
 
   this.ordersService.addOrder(order)
-  .subscribe(result=>console.log(result),error=>console.log(error));
+  .subscribe(result=>this.orderMsg = String(result),error=>console.log(error));
 
   }
 
