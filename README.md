@@ -28,15 +28,17 @@ Subash Mainali: task completed
   - [x] 1. All the models created
   - [x] 2. Delete employee
   - [x] 3. Sign in and sign up User
-  - [ ] 4. Generate report
-  - [ ] 5. Logout
+  - [x] 4. Generate report
+  - [x] 5. Logout
+  - [x] 6. Raise Ticket
 - Frontend:
   - [x] 1. Sign in and Sign up User
   - [x] 2. User panel (early stage)
-  - [ ] 3. Add Employee
-  - [ ] 4. Delete Employee
-  - [ ] 5. Generate report
-  - [ ] 6. Logout
+  - [x] 3. Add Employee
+  - [x] 4. Delete Employee
+  - [x] 5. Generate report
+  - [x] 6. Logout
+  - [x] 7. Raise Ticket
 
 
 Alexander Isin:
