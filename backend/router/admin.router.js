@@ -8,5 +8,5 @@ router.get("/viewRequest", reqController.fetchAll);
 router.get("/getReportByDate", reportController.retrieveReportByDate);
 router.get("/getReportByProduct", reportController.retrieveReportByProduct);
 router.get("/getReportByEmail", reportController.retrieveReportByEmail);
-
+router.delete("/deleteRequest/:requestId", reqController.deleteRequest)
 module.exports = router;

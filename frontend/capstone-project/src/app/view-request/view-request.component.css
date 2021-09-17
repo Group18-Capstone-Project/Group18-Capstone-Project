@@ -1,0 +1,12 @@
+table{ 
+    border-collapse:separate; 
+    } 
+    th{ 
+    background-color:white; 
+    color: black; 
+    } 
+    th,td{ 
+    width: 150px; 
+    text-align: center; 
+    border: 1px solid black; 
+    }

@@ -18,4 +18,7 @@ export class ViewRequestService {
 				catchError(error => throwError(error))
 			)
 	}
+	deleteRequest(req:Request): Observable<any>{
+		return this.http.delete("http://localhost:9090/api/admin/deleteRequest/"+ req._id,{responseType:'text'});
+	  }
 }
